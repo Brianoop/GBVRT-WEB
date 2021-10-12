@@ -72,8 +72,8 @@
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
                     <div class="app-card-body p-3 p-lg-4">
-                        <h4 class="stats-type mb-1">Total Sales</h4>
-                        <div class="stats-figure">$12,628</div>
+                        <h4 class="stats-type mb-1">Total Cases</h4>
+                        <div class="stats-figure">58</div>
                         <div class="stats-meta text-success">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -92,14 +92,14 @@
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
                     <div class="app-card-body p-3 p-lg-4">
-                        <h4 class="stats-type mb-1">Expenses</h4>
-                        <div class="stats-figure">$2,250</div>
+                        <h4 class="stats-type mb-1">Complaints</h4>
+                        <div class="stats-figure">11</div>
                         <div class="stats-meta text-success">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill="currentColor"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                     d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
-                            </svg> 5%
+                            </svg> 11%
                         </div>
                     </div>
                     <!--//app-card-body-->
@@ -111,10 +111,9 @@
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
                     <div class="app-card-body p-3 p-lg-4">
-                        <h4 class="stats-type mb-1">Projects</h4>
-                        <div class="stats-figure">23</div>
-                        <div class="stats-meta">
-                            Open</div>
+                        <h4 class="stats-type mb-1">Users</h4>
+                        <div class="stats-figure">207</div>
+                
                     </div>
                     <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
@@ -125,9 +124,9 @@
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
                     <div class="app-card-body p-3 p-lg-4">
-                        <h4 class="stats-type mb-1">Invoices</h4>
-                        <div class="stats-figure">6</div>
-                        <div class="stats-meta">New</div>
+                        <h4 class="stats-type mb-1">Sub Counties</h4>
+                        <div class="stats-figure">16</div>
+                        
                     </div>
                     <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
@@ -137,18 +136,19 @@
             <!--//col-->
         </div>
         <!--//row-->
+        @if (Auth::user()->type == 1)
         <div class="row g-4 mb-4">
             <div class="col-12 col-lg-6">
                 <div class="app-card app-card-chart h-100 shadow-sm">
                     <div class="app-card-header p-3">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-auto">
-                                <h4 class="app-card-title">Line Chart Example</h4>
+                                <h4 class="app-card-title">Reported Cases</h4>
                             </div>
                             <!--//col-->
                             <div class="col-auto">
                                 <div class="card-header-action">
-                                    <a href="charts.html">More charts</a>
+                                    <!-- <a href="charts.html">More charts</a> -->
                                 </div>
                                 <!--//card-header-actions-->
                             </div>
@@ -180,12 +180,12 @@
                     <div class="app-card-header p-3">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-auto">
-                                <h4 class="app-card-title">Bar Chart Example</h4>
+                                <h4 class="app-card-title">Active Users</h4>
                             </div>
                             <!--//col-->
                             <div class="col-auto">
                                 <div class="card-header-action">
-                                    <a href="charts.html">More charts</a>
+                                    <!-- <a href="charts.html">More charts</a> -->
                                 </div>
                                 <!--//card-header-actions-->
                             </div>
@@ -221,12 +221,12 @@
                     <div class="app-card-header p-3">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-auto">
-                                <h4 class="app-card-title">Progress</h4>
+                                <h4 class="app-card-title">Reported Cases by Category</h4>
                             </div>
                             <!--//col-->
                             <div class="col-auto">
                                 <div class="card-header-action">
-                                    <a href="#">All projects</a>
+                                    <a href="#">All Cases</a>
                                 </div>
                                 <!--//card-header-actions-->
                             </div>
@@ -239,7 +239,7 @@
                         <div class="item p-3">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <div class="title mb-1 ">Project lorem ipsum dolor sit amet</div>
+                                    <div class="title mb-1 ">Physical Abuse</div>
                                     <div class="progress">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 25%;"
                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -264,7 +264,7 @@
                         <div class="item p-3">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <div class="title mb-1 ">Project duis aliquam et lacus quis ornare</div>
+                                    <div class="title mb-1 ">Female Genital Mutilation</div>
                                     <div class="progress">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 34%;"
                                             aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
@@ -288,7 +288,7 @@
                         <div class="item p-3">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <div class="title mb-1 ">Project sed tempus felis id lacus pulvinar
+                                    <div class="title mb-1 ">Psychological Torture
                                     </div>
                                     <div class="progress">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 68%;"
@@ -313,7 +313,7 @@
                         <div class="item p-3">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <div class="title mb-1 ">Project sed tempus felis id lacus pulvinar
+                                    <div class="title mb-1 ">Sexual Abuse
                                     </div>
                                     <div class="progress">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 52%;"
@@ -424,6 +424,7 @@
             <!--//col-->
         </div>
         <!--//row-->
+       
         <div class="row g-4 mb-4">
             <div class="col-12 col-lg-4">
                 <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
@@ -444,7 +445,7 @@
                             </div>
                             <!--//col-->
                             <div class="col-auto">
-                                <h4 class="app-card-title">Invoices</h4>
+                                <h4 class="app-card-title">Manage Users</h4>
                             </div>
                             <!--//col-->
                         </div>
@@ -453,12 +454,11 @@
                     <!--//app-card-header-->
                     <div class="app-card-body px-4">
 
-                        <div class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Etiam aliquet eros vel diam semper mollis.</div>
+                        <div class="intro">Manage users by creating user accounts, editing user details and deleting accounts.</div>
                     </div>
                     <!--//app-card-body-->
                     <div class="app-card-footer p-4 mt-auto">
-                        <a class="btn app-btn-secondary" href="#">Create New</a>
+                        <a class="btn app-btn-secondary" href="#">Manage Users</a>
                     </div>
                     <!--//app-card-footer-->
                 </div>
@@ -484,7 +484,7 @@
                             </div>
                             <!--//col-->
                             <div class="col-auto">
-                                <h4 class="app-card-title">Apps</h4>
+                                <h4 class="app-card-title">Manage Chats</h4>
                             </div>
                             <!--//col-->
                         </div>
@@ -493,18 +493,18 @@
                     <!--//app-card-header-->
                     <div class="app-card-body px-4">
 
-                        <div class="intro">Pellentesque varius, elit vel volutpat sollicitudin, lacus
-                            quam efficitur augue</div>
+                        <div class="intro">Manage chats by deleting some chats and disabling chats.</div>
                     </div>
                     <!--//app-card-body-->
                     <div class="app-card-footer p-4 mt-auto">
-                        <a class="btn app-btn-secondary" href="#">Create New</a>
+                        <a class="btn app-btn-secondary" href="#">Manage Chats</a>
                     </div>
                     <!--//app-card-footer-->
                 </div>
                 <!--//app-card-->
             </div>
             <!--//col-->
+          
             <div class="col-12 col-lg-4">
                 <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
                     <div class="app-card-header p-3 border-bottom-0">
@@ -524,7 +524,7 @@
                             </div>
                             <!--//col-->
                             <div class="col-auto">
-                                <h4 class="app-card-title">Tools</h4>
+                                <h4 class="app-card-title">Settings</h4>
                             </div>
                             <!--//col-->
                         </div>
@@ -533,12 +533,11 @@
                     <!--//app-card-header-->
                     <div class="app-card-body px-4">
 
-                        <div class="intro">Sed maximus, libero ac pharetra elementum, turpis nisi
-                            molestie neque, et tincidunt velit turpis non enim.</div>
+                        <div class="intro">Manage GBVRTs system settings.</div>
                     </div>
                     <!--//app-card-body-->
                     <div class="app-card-footer p-4 mt-auto">
-                        <a class="btn app-btn-secondary" href="#">Create New</a>
+                        <a class="btn app-btn-secondary" href="#">Manage</a>
                     </div>
                     <!--//app-card-footer-->
                 </div>
@@ -546,6 +545,8 @@
             </div>
             <!--//col-->
         </div>
+        @endif 
+        
         <!--//row-->
 
     </div>

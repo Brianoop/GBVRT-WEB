@@ -9,7 +9,7 @@
             <form class="settings-form">
                 <div class="mb-3">
                     <label for="setting-input-2" class="form-label">Details</label>
-                    <textarea type="text" class="form-control"  placeholder="What is the problem?" name="compalint-detail" value="{{ old('complaint-detail') }}" rows="5" required></textarea>
+                    <textarea type="text" class="form-control"  placeholder="What is the problem?" name="compalint-detail" value="{{ old('complaint-detail') }}" rows="5" style="height: 10rem;" required></textarea>
                 </div>
               
                 <button type="submit" class="btn app-btn-primary">Send Complaint</button>

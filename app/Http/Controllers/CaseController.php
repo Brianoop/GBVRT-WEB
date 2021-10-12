@@ -23,7 +23,7 @@ class CaseController extends Controller
     public function storeCase(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'location' => 'required|string',
+            'sub_county' => 'required|integer',
             'violence' => 'required|integer',
             'details' => 'required|string',
             'activist' => 'required|integer'
@@ -39,7 +39,7 @@ class CaseController extends Controller
 
         $user_case->violences_id = $request->violence;
 
-        $user_case->location = $request->location;
+        $user_case->sub_counties_id = $request->sub_county;
 
         $user_case->details = $request->details;
 

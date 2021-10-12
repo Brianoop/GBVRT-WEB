@@ -27,8 +27,18 @@ class UserCase extends Model
         return $this->hasMany(CaseReceiver::class);
     }
 
+    public function case_media()
+    {
+        return $this->hasMany(CaseMedia::class);
+    }
+
     public function violences()
     {
-        return $this->hasMany(Violence::class);
+        return $this->belongsTo(Violence::class);
+    }
+
+    public function sub_counties()
+    {
+        return $this->belongsTo(SubCounties::class);
     }
 }

@@ -17,8 +17,8 @@ class CreateUserCasesTable extends Migration
             $table->id();
             $table->foreignId('users_id')->nullable()->constrained('users')->onDelete('set null')->onUpdate('cascade');
             $table->foreignId('violences_id')->nullable()->constrained('violences')->onDelete('set null')->onUpdate('cascade');
-            $table->string('location')->nullable();
-            $table->string('details')->nullable();
+            $table->foreignId('sub_counties_id')->nullable()->constrained('sub_counties')->onUpdate('cascade')->onDelete('set null');
+            $table->text('details')->nullable();
             $table->timestamps();
         });
     }

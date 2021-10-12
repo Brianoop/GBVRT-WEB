@@ -19,18 +19,26 @@
                         @csrf
                         @method('POST')
 
-
-
-
                         <div class="mb-3">
                             <label for="setting-input-1" class="form-label">Location<span class="ms-2"
                                     data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top"
                                     data-content="This is a Bootstrap popover example. You can use popover to provide extra info."></span></label>
-                            @error('location')
+                            @error('sub_county')
                                 <span class="text text-danger">{{ $message }}</span>
                             @enderror
-                            <input type="text" class="form-control" id="setting-input-1" name="location"
-                                value="{{ old('location') }}" placeholder="What is your current location?" required>
+                            <select name="sub_county" id="sub_county" class="form-control">
+                                <option value="">Select Subcounty</option>
+                                @if(count($sub_counties) > 0)
+
+                                    @foreach($sub_counties as $sub_county)
+
+                                        <option value="{{ $sub_county->id }}">{{ $sub_county->name }}</option>
+
+                                    @endforeach
+
+                                @endif
+                                
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="Violence Type" class="form-label">Violence Type</label>
@@ -74,13 +82,22 @@
 
                             </select>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="setting-input-3" class="form-label">Upload images for proof if any</label>
+                            <input type="file" name="image">
+                        </div>
+                        <div class="mb-3">
+                            <label for="setting-input-3" class="form-label">Upload videos for proof if any</label>
+                            <input type="file" name="video">
+                        </div>
                         <button type="submit" class="btn app-btn-primary">Save Case</button>
                     </form>
                 </div>
-                <!--//app-card-body-->
+               
 
             </div>
-            <!--//app-card-->
+    
         </div>
     </div>
 

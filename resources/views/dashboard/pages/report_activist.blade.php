@@ -16,8 +16,7 @@
                 <button type="submit" class="btn app-btn-primary">Report Activist</button>
             </form>
         </div>
-        <!--//app-card-body-->
-
+       
     </div>
 
 @endsection
