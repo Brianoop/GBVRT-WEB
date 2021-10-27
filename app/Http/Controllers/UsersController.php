@@ -10,10 +10,7 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function showUsersCases()
-    {
-        return view('dashboard.pages.user_cases');
-    }
+    
 
     public function showReportCasePage()
     {

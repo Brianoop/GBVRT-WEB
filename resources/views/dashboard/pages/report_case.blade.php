@@ -15,7 +15,7 @@
 
 
                 <div class="app-card-body">
-                    <form method="POST" action="{{ route('case.report') }}" class="settings-form">
+                    <form method="POST" action="{{ route('case.report') }}" class="settings-form" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
 
@@ -66,6 +66,7 @@
                                 placeholder="Briefly describe what happened and how you wish to be contacted" name="details"
                                 value="{{ old('details') }}" rows="5" required style="height: 10rem;"></textarea>
                         </div>
+
                         <div class="mb-3">
                             <label for="setting-input-3" class="form-label">Choose activist to forward case to</label>
                             <select name="activist" id="activist" class="form-control">
@@ -84,12 +85,11 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="setting-input-3" class="form-label">Upload images for proof if any</label>
-                            <input type="file" name="image">
-                        </div>
-                        <div class="mb-3">
-                            <label for="setting-input-3" class="form-label">Upload videos for proof if any</label>
-                            <input type="file" name="video">
+                            @error('files')
+                                <span class="text text-danger">{{ $message }}</span><br>
+                            @enderror
+                            <label for="setting-input-3" class="form-label">Upload photos or videos for proof if any</label> <br>
+                            <input type="file" name="files[]" class="form-control-file" multiple=''>
                         </div>
                         <button type="submit" class="btn app-btn-primary">Save Case</button>
                     </form>

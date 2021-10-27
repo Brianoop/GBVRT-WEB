@@ -10,6 +10,9 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ComplaintsController;
 use App\Http\Controllers\CaseController;
+use App\Http\Controllers\ViolenceController;
+use App\Http\Controllers\SubCountiesController;
+use App\Http\Controllers\UserCaseController;
 
 
 /*
@@ -33,40 +36,56 @@ Route::get('/signup', [CustomAuthController::class, 'showSignupPage'])->name('si
 
 Route::get('/forgot-password', [CustomAuthController::class, 'showForgotPasswordPage'])->name('forgot.password');
 
-Route::get('/dashboard-home', [CustomAuthController::class, 'showDashboardHome'])->name('dashboard.home')->middleware('auth');
+Route::group(['middleware' => 'auth'], function($router){
+    Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
+    Route::get('/activists', [ActivistsController::class, 'showActivists'])->name('view.activists');
+
+    Route::get('/activists-cases', [ActivistsController::class, 'showActivistCases'])->name('activists.cases');
+
+    Route::get('/activist-details', [ActivistsController::class, 'showActivistDetails'])->name('activist.details');
+
+    Route::get('/report-activist', [ActivistsController::class, 'showReportActivist'])->name('activist.report');
+
+    Route::get('/report-cases', [UsersController::class, 'showReportCasePage'])->name('report.case');
+
+    Route::get('/send-complaint', [UsersController::class, 'showSendComplaintPage'])->name('send.complaint');
+
+
+    Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('user.settings');
+
+    Route::get('/account', [AccountController::class, 'showAccountPage'])->name('user.account');
+
+    Route::get('/chat', [ChatController::class, 'showChats'])->name('user.chats');
+
+    Route::get('/chat-detail', [ChatController::class, 'showChatDetail'])->name('chat.detail');
+
+    Route::get('/complaints', [ComplaintsController::class, 'showComplaintsPage'])->name('user.complaints');
+
+    Route::get('/manage-cases', [CaseController::class, 'showManageCases'])->name('manage.cases');
+
+    Route::post('/report-case', [CaseController::class, 'storeCase'])->name('case.report');
+
+    Route::get('/view-case-detail-as-admin', [CaseController::class, 'showAdminCaseDetailPage'])->name('admin.view.case.detail');
+
+    Route::get('/create-violence-type', [ViolenceController::class, 'showCreateViolencePage'])->name('violence.create');
+
+    Route::post('/create-violence-type', [ViolenceController::class, 'createViolenceType'])->name('violence.save');
+
+    Route::get('/create-sub-county', [SubCountiesController::class, 'showCreateSubcountyPage'])->name('subcounty.create');
+
+    Route::post('/create-sub-county', [SubCountiesController::class, 'createSubcounty'])->name('subcounty.save');
+
+    Route::get('/user-cases', [UserCaseController::class, 'showUserCasesPage'])->name('users.cases');
+
+
+
+});
+
+Route::get('/dashboard-home', [CustomAuthController::class, 'showDashboardHome'])->name('dashboard.home');
 
 //Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
 //Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
 //Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
-Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
-
-Route::get('/activists', [ActivistsController::class, 'showActivists'])->name('view.activists')->middleware('auth');
-
-Route::get('/activists-cases', [ActivistsController::class, 'showActivistCases'])->name('activists.cases')->middleware('auth');
-
-Route::get('/activist-details', [ActivistsController::class, 'showActivistDetails'])->name('activist.details')->middleware('auth');
-
-Route::get('/report-activist', [ActivistsController::class, 'showReportActivist'])->name('activist.report')->middleware('auth');
-
-Route::get('/users-cases', [UsersController::class, 'showUsersCases'])->name('users.cases')->middleware('auth');
-
-Route::get('/report-cases', [UsersController::class, 'showReportCasePage'])->name('report.case')->middleware('auth');
-
-Route::get('/send-complaint', [UsersController::class, 'showSendComplaintPage'])->name('send.complaint')->middleware('auth');
-
-
-Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('user.settings')->middleware('auth');
-
-Route::get('/account', [AccountController::class, 'showAccountPage'])->name('user.account')->middleware('auth');
-
-Route::get('/chat', [ChatController::class, 'showChats'])->name('user.chats')->middleware('auth');
-
-Route::get('/chat-detail', [ChatController::class, 'showChatDetail'])->name('chat.detail')->middleware('auth');
-
-Route::get('/complaints', [ComplaintsController::class, 'showComplaintsPage'])->name('user.complaints')->middleware('auth');
-
-Route::get('/manage-cases', [CaseController::class, 'showManageCases'])->name('manage.cases')->middleware('auth');
-
-Route::post('/report-case', [CaseController::class, 'storeCase'])->name('case.report')->middleware('auth');
