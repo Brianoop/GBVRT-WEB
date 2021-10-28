@@ -25,7 +25,6 @@ class UserCaseController extends Controller
 
     public function showUserCasesPage()
     {
-      
 
         $logged_in_users_cases = $this->user_cases->join('violences', 'user_cases.violences_id', '=', 'violences.id')
         ->join('sub_counties', 'sub_counties.id', '=', 'user_cases.sub_counties_id')

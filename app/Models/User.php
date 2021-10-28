@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'users_id',
         'email',
         'contact',
         'avatar',
@@ -59,5 +59,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserCases::class);
     }
+
+    public function activist_data()
+    {
+        return $this->hasMany(ActivstData::class);
+    }
+
+    public function activist_services()
+    {
+        return $this->hasMany(ActivistServices::class);
+    }
+
+    public function reported_users()
+    {
+        return $this->hasMany(ReportedUsers::class);
+    }
+
 }
 
