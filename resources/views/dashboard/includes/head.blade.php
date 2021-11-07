@@ -12,6 +12,9 @@
 <!-- FontAwesome JS-->
 <script defer src="{{ asset('dashboard_assets/plugins/fontawesome/js/all.min.js') }}"></script>
 
+<!-- Custom CSS -->
+<link  rel="stylesheet" href="{{ asset('dashboard_assets/css/custom-styles.css') }}">
+
 <!-- App CSS -->  
 <link id="theme-style" rel="stylesheet" href="{{ asset('dashboard_assets/css/portal.css') }}">
 

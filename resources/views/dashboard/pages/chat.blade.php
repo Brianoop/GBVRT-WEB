@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <h5>My Chats</h5>
+    <div class="content-navigation-section">
+        <h5>My Chats</h5>
+        <a href="#" class="text text-primary">Back</a>
+    </div>
 
     <div class="row">
         <div class="col-md-12">

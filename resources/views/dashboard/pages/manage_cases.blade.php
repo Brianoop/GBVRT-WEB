@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <h5>Manage Cases</h4>
+        <div class="content-navigation-section">
+            <h5>Manage Cases</h5>
+            <a href="#" class="text text-primary">Back</a>
+        </div>
 
     <div class="container">
         <hr>

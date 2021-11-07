@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <h5>Complaints</h5>
+    <div class="content-navigation-section">
+        <h5>Complaints</h5>
+        <a href="#" class="text text-primary">Back</a>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-6 card shadow-sm p-2">

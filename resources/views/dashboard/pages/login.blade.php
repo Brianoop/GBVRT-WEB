@@ -65,11 +65,11 @@
 											</label>
 										</div>
 									</div><!--//col-6-->
-									<div class="col-6">
+									{{-- <div class="col-6">
 										<div class="forgot-password text-end">
 											<a href="{{ route('forgot.password') }}">Forgot password?</a>
 										</div>
-									</div><!--//col-6-->
+									</div><!--//col-6--> --}}
 								</div><!--//extra-->
 							</div><!--//form-group-->
 							<div class="text-center">

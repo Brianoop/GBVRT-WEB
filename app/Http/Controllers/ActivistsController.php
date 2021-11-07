@@ -9,7 +9,7 @@ class ActivistsController extends Controller
 {
     private $users;
 
-    public function __construct(user $users)
+    public function __construct(User $users)
     {
         $this->users = $users;
     }

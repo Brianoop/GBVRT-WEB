@@ -1,0 +1,22 @@
+.confirmation-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 780px) {
+    .confirmation-dialog {
+        margin: .5rem;
+    }
+}
+
+.send-complaint-buttons {
+    display: flex;
+    justify-content: space-between !important;
+    justify-items:flex-start;
+}
+
+.content-navigation-section {
+    display: flex;
+    justify-content: space-between;
+}

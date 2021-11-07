@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <h5>Report Activist</h5>
+    <div class="content-navigation-section">
+        <h5>Report Activist</h5>
+        <a href="#" class="text text-primary">Back</a>
+    </div>
+
     <div class="app-card app-card-settings shadow-sm p-4">
 
         <div class="app-card-body">

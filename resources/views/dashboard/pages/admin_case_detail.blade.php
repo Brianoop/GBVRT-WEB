@@ -2,7 +2,12 @@
 
 @section('content')
 
-    <h5>Orisahaba Joseline</h4>
+
+
+        <div class="content-navigation-section">
+            <h5>Joseline Orishaba</h5>
+            <a href="#" class="text text-primary">Back</a>
+        </div>
 
     <div class="container">
         <hr>

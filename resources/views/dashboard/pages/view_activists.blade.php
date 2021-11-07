@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <h5>View Activists</h5>
+ 
+    <div class="content-navigation-section">
+        <h5>View Activists</h5>
+        <a href="#" class="text text-primary">Back</a>
+    </div>
 
     <div class="row">
         

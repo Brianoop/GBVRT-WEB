@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <h5>Activists Cases</h5>
+    <div class="content-navigation-section">
+        <h5>Activist Cases</h5>
+        <a href="#" class="text text-primary">Back</a>
+    </div>
 
     <div class="row">
         <div class="col-md-6 mb-1">

@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <h5>User Cases <strong>( {{ count($user_cases) }} )</strong></h5>
+    
+    <div class="content-navigation-section">
+        <h5>User Cases <strong>( {{ $total }} )</strong></h5>
+        <a href="#" class="text text-primary">Back</a>
+    </div>
 
     <div class="row">
        
@@ -69,7 +73,7 @@
                 </div>
                 <!--//app-card-body-->
                 <div class="app-card-footer p-4 mt-auto">
-                    <a class="btn app-btn-secondary" href="#">Manage Case</a>
+                    <a class="btn app-btn-secondary" href="{{ url('/user-case-detail' . '/' .$case->case_id ) }}">Manage Case</a>
                 </div>
                 <!--//app-card-footer-->
 

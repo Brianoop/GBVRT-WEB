@@ -8,3 +8,7 @@
 
 <!-- Page Specific JS -->
 <script src="{{ asset('dashboard_assets/js/app.js') }}"></script>
+
+<!-- GBVRT JS -->
+
+<script src="{{ asset('dashboard_assets/js/custom-script.js') }}"></script>
