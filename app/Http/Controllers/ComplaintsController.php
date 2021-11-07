@@ -82,6 +82,29 @@ class ComplaintsController extends Controller
             'id' => 'required|integer'
         ]);
 
-        dd('Yes');
+        try
+        {
+            $my_complaint =  $this->complaints::findOrFail($request->id);
+        }
+        catch(ModelNotFoundException $e)
+        {
+            return back()->with([
+                'status' => false,
+                'message' => 'Complaint ID nolonger exists!'
+            ]);
+        }
+
+
+        if($my_complaint->delete())
+        {
+            return redirect()->route('my.complaints')->with([
+                'status' => true,
+                'message' => 'Your complaint has been deleted successfully.']);
+        }
+        else {
+            return back()->with([
+                'status' => false,
+                'message' => 'A problem occurred while deleting your complaint.']);
+        }
     }
 }

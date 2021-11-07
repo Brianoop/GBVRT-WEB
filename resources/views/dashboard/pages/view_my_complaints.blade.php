@@ -7,6 +7,14 @@
         <a href="{{ url('/send-complaint') }}" class="text text-primary">Back</a>
     </div>
 
+    @if(Session::has('status'))
+
+    <div class="{{ Session::get('status') == true ? 'alert alert-success' : 'alert alert-danger'}}">
+        {{ Session::get('message') }}
+    </div>
+
+    @endif
+
     @forelse($users_complaints as $user_complaint)
         <div class="card shadow-sm p-3">
             <p class="text text-sm"><i>{{ $user_complaint->content }}</i></p>
@@ -16,6 +24,7 @@
 
     @empty 
         <p>You haven't made any complaints!</p>
+        <a href="{{ url('/send-complaint') }}">Send a Complaint</a>
     @endforelse
 
     {!! $users_complaints->links() !!}

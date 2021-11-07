@@ -14,7 +14,7 @@
             
                 <div class="mb-3">
                     <label for="setting-input-2" class="form-label">Details</label>
-                    <textarea type="text" class="form-control"  placeholder="What is the problem?" name="report" value="{{ old('report') }}" rows="5" required></textarea>
+                    <textarea type="text" class="form-control" style="height: 10rem"  placeholder="What is the problem?" name="report" value="{{ old('report') }}" rows="5" required></textarea>
                 </div>
               
                 <button type="submit" class="btn app-btn-primary">Report Activist</button>
