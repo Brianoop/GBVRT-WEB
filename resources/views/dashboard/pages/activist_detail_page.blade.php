@@ -13,40 +13,34 @@
                 <div class="app-card-header px-4 py-3">
                     <div class="row g-3 align-items-center">
                         <div class="col-12 col-lg-auto text-center text-lg-start">
-                            <img class="profile-image" src="{{ asset('dashboard_assets/images/profiles/profile-1.png') }}"
+                            <img class="profile-image" src="{{ asset($activist->activist_avatar) }}"
                                 alt="">
                         </div>
                         <div class="col-12 col-lg-auto text-center text-lg-start">
-                            <div class="notification-type mb-2"><span class="badge bg-info">Fight Against Violence</span>
+                            <div class="notification-type mb-2"><span class="badge bg-info">{{ $activist->activist_name }}</span>
                             </div>
-                            <h4 class="notification-title mb-1">A Human Rights Group</h4>
+                            <h4 class="notification-title mb-1">{{ $activist->organisation_name }}</h4>
 
                             <ul class="notification-meta list-inline mb-0">
-                                <li class="list-inline-item">Joined 2 months ago</li>
+                                <li class="list-inline-item">Joined {{ $activist->created_at->diffForHumans() }}</li>
                             </ul>
 
                         </div>
                     </div>
                 </div>
                 <div class="app-card-body p-4">
-                    <div class="notification-content">We are a human rights group committed to fighting violence against
-                        women and children in Northern Uganda, Gulu. <br>
-                        
-                      <!--  <strong> We fight the following types of violence</strong>
-                        <ul>
-                            <li>Domestic Violence</li>
-                        </ul> -->
-                    
-                    </div>
+                    <div class="notification-content">{{ $activist->detailed_description }}</div>
                 </div>
-                <div class="app-card-footer px-4 py-3">
-                    <a class="action-link" href="#">Message Us!<svg width="1em" height="1em" viewBox="0 0 16 16"
-                            class="bi bi-arrow-right ms-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                        </svg></a> 
+                <div class="app-card-footer px-4 py-3 activist-messaging-actions">
 
-                        <a class="action-link ml-5" href="{{ route('activist.report') }}">Report</a>
+                    <a class="action-link" href="#">Message Us!<svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-arrow-right ms-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                    </svg></a> 
+
+                    <a class="action-link ml-5" href="{{ url('/report-activist' . '/' . $activist->activist_id ) }}">Report</a> 
+                    
                 </div>
             </div>
         </div>
@@ -75,58 +69,21 @@
                 </div>
                 <div class="app-card-body px-4 w-100">
 
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>Service Name </strong></div>
-                                <div class="item-data">Description of the service</div>
+                    @forelse($activist_services as $service)
+
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><strong>{{ $service->name }} </strong></div>
+                                    <div class="item-data">{{ $service->description }}</div>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>Service Name </strong></div>
-                                <div class="item-data">Description of the service</div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>Service Name </strong></div>
-                                <div class="item-data">Description of the service</div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>Service Name </strong></div>
-                                <div class="item-data">Description of the service</div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="item border-bottom py-3">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <div class="item-label"><strong>Service Name </strong></div>
-                                <div class="item-data">Description of the service</div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-
+                    @empty 
+                        <i>There are currently no available services by this activist.</i>
+                    @endforelse
 
                 </div>
 

@@ -20,3 +20,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+.activist-messaging-actions {
+    display: flex !important;
+    justify-content: space-between !important;
+    justify-items:flex-start !important;
+}

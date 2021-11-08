@@ -50,6 +50,7 @@ class ActivistsController extends Controller
         ->where('users.type', 2)
         ->where('users.id', $id)
         ->select(
+            'users.id as activist_id',
             'users.name as activist_name',
             'users.email as activist_email',
             'users.contact as activist_contact',
@@ -68,9 +69,11 @@ class ActivistsController extends Controller
         ]);
     }
 
-    public function showReportActivist()
+    public function showReportActivist($id)
     {
-        return view('dashboard.pages.report_activist');
+        return view('dashboard.pages.report_activist', [
+            'id' => $id
+        ]);
     }
 
     

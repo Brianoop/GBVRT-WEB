@@ -13,6 +13,8 @@ use App\Http\Controllers\CaseController;
 use App\Http\Controllers\ViolenceController;
 use App\Http\Controllers\SubCountiesController;
 use App\Http\Controllers\UserCaseController;
+use App\Http\Controllers\ReportedUsersController;
+
 
 
 /*
@@ -45,7 +47,7 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::get('/activist-details/{id}', [ActivistsController::class, 'showActivistDetails'])->name('activist.details');
 
-    Route::get('/report-activist', [ActivistsController::class, 'showReportActivist'])->name('activist.report');
+    Route::get('/report-activist/{id}', [ActivistsController::class, 'showReportActivist'])->name('activist.report');
 
     Route::get('/report-cases', [UsersController::class, 'showReportCasePage'])->name('report.case');
 
@@ -91,7 +93,7 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::delete('/delete-user-case', [UserCaseController::class, 'deleteUserCase'])->name('delete.user.case');
 
-    
+    Route::post('/report-an-activist', [ReportedUsersController::class, 'reportAUser'])->name('report.activist');
 
 });
 
