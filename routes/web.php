@@ -80,10 +80,17 @@ Route::group(['middleware' => 'auth'], function($router){
     Route::get('/create-violence-type', [ViolenceController::class, 'showCreateViolencePage'])->name('violence.create');
 
     Route::post('/create-violence-type', [ViolenceController::class, 'createViolenceType'])->name('violence.save');
+    
+
+    Route::get('/view-sub-counties', [SubCountiesController::class, 'showSubCounties'])->name('subcounties.view');
 
     Route::get('/create-sub-county', [SubCountiesController::class, 'showCreateSubcountyPage'])->name('subcounty.create');
 
     Route::post('/create-sub-county', [SubCountiesController::class, 'createSubcounty'])->name('subcounty.save');
+
+    Route::get('/edit-sub-county/{id}', [SubCountiesController::class, 'showEditSubCountyPage'])->name('subcounty.edit');
+
+    Route::put('/update-sub-county', [SubCountiesController::class, 'updateSubCounty'])->name('subcounty.update');
 
     Route::get('/user-cases', [UserCaseController::class, 'showUserCasesPage'])->name('users.cases');
 

@@ -51,10 +51,7 @@ class CustomAuthController extends Controller
 
     public function showDashboardHome() 
     {
-      
             return view('dashboard.pages.home');
-        
-        
     }
 
     public function showForgotPasswordPage()
@@ -134,7 +131,6 @@ class CustomAuthController extends Controller
 
     public function signOut(Request $request) {
    
-
       Session::flush();
 
       Auth::logout();

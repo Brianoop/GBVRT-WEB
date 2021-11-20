@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="content-navigation-section">
-        <h5>Create Sub County</h5>
+        <h5>Edit Sub County</h5>
         <a href="{{ route('subcounties.view') }}" class="text text-primary">Back</a>
     </div>
 
@@ -18,9 +18,9 @@
 
 
                 <div class="app-card-body">
-                    <form method="POST" action="{{ route('subcounty.save') }}" class="settings-form">
+                    <form method="POST" action="{{ route('subcounty.update') }}" class="settings-form">
                         @csrf
-                        @method('POST')
+                        @method('PUT')
 
                         <div class="mb-3">
                             <label for="setting-input-1" class="form-label">Name<span class="ms-2"
@@ -29,7 +29,8 @@
                             @error('name')
                                 <span class="text text-danger">{{ $message }}</span>
                             @enderror
-                            <input type="text" class="form-control" name="name" placeholder="Name of Sub County">
+                            <input type="hidden" name="id" value="{{ $sub_county->id }}">
+                            <input type="text" class="form-control" name="name" placeholder="{{ $sub_county->name }}" value="{{ $sub_county->name }}">
                         </div>
 
                     

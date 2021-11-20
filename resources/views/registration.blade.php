@@ -9,6 +9,7 @@
 
                         <form action="{{ route('register.custom') }}" method="POST">
                             @csrf
+                            @method('POST')                            
                             <div class="form-group mb-3">
                                 <input type="text" placeholder="Name" id="name" class="form-control" name="name"
                                     required autofocus>
