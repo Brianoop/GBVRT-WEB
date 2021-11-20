@@ -193,7 +193,7 @@
 
                 <li class="nav-item">
 
-                    <a class="nav-link" href="{{ route('violence.create') }}">
+                    <a class="nav-link" href="{{ route('violence.types.view') }}">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">

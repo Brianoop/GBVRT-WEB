@@ -87,5 +87,32 @@ class SubCountiesController extends Controller
         }
     }
 
-    
+    public function showConfirmDeleteSubCountyPage($id)
+    {
+        return view('dashboard.pages.confirm_delete_sub_county', ['id' => $id]);
+    }
+
+    public function deleteSubCounty(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $sub_county = SubCounties::find($request->id);
+
+        if($sub_county->delete())
+        {
+            return redirect()->route('subcounties.view')->withSuccess('Deleted sub county ' . $sub_county->name . ' successfully!');
+        }
+        else 
+        {
+            return back()->with(['error' => 'Failed to delete the Sub County.']);
+        }
+    }
+
+
 }

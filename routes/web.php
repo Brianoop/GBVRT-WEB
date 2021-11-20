@@ -77,9 +77,24 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::get('/view-case-detail-as-admin', [CaseController::class, 'showAdminCaseDetailPage'])->name('admin.view.case.detail');
 
+
+
+    Route::get('/show-violence-types', [ViolenceController::class, 'showViolenceTypesPage'])->name('violence.types.view');
+
     Route::get('/create-violence-type', [ViolenceController::class, 'showCreateViolencePage'])->name('violence.create');
 
     Route::post('/create-violence-type', [ViolenceController::class, 'createViolenceType'])->name('violence.save');
+
+    Route::get('/edit-violence-type/{id}', [ViolenceController::class, 'showEditViolenceTypePage'])->name('violence.type.edit');
+
+    Route::put('/update-violence-types', [ViolenceController::class, 'updateViolenceType'])->name('violence.type.update');
+
+
+
+
+
+
+
     
 
     Route::get('/view-sub-counties', [SubCountiesController::class, 'showSubCounties'])->name('subcounties.view');
@@ -91,6 +106,14 @@ Route::group(['middleware' => 'auth'], function($router){
     Route::get('/edit-sub-county/{id}', [SubCountiesController::class, 'showEditSubCountyPage'])->name('subcounty.edit');
 
     Route::put('/update-sub-county', [SubCountiesController::class, 'updateSubCounty'])->name('subcounty.update');
+
+    Route::get('/confirm-delete-sub-county/{id}', [SubCountiesController::class, 'showConfirmDeleteSubCountyPage'])->name('subcounty.delete.confirm');
+
+    Route::delete('/delete-sub-county', [SubCountiesController::class, 'deleteSubCounty'])->name('subcounty.delete');
+
+
+
+
 
     Route::get('/user-cases', [UserCaseController::class, 'showUserCasesPage'])->name('users.cases');
 

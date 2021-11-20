@@ -4,7 +4,7 @@
 
 
     <div class="content-navigation-section">
-        <h5>Create Violence Type</h5>
+        <h5>Edit Violence Type</h5>
         <a href="{{ route('violence.types.view') }}" class="text text-primary">Back</a>
     </div>
 
@@ -12,16 +12,18 @@
         <div class="col-md-12">
             <div class="app-card app-card-settings shadow-sm p-4">
                    @if(Session::has('success'))
+                        <br>
                         <span class="text text-success">{{ Session::get('success') }}</span>
                    @elseif (Session::has('error'))
+                        <br>
                         <span class="text text-danger">{{ Session::get('error') }}</span>
                    @endif
 
 
                 <div class="app-card-body">
-                    <form method="POST" action="{{ route('violence.save') }}" class="settings-form">
+                    <form method="POST" action="{{ route('violence.type.update') }}" class="settings-form">
                         @csrf
-                        @method('POST')
+                        @method('PUT')
 
                         <div class="mb-3">
                             <label for="setting-input-1" class="form-label">Name<span class="ms-2"
@@ -30,7 +32,8 @@
                             @error('name')
                                 <span class="text text-danger">{{ $message }}</span>
                             @enderror
-                            <input type="text" class="form-control" name="name" placeholder="Name of violence">
+                            <input type="hidden" name="id" value="{{ $violence_type->id }}">
+                            <input type="text" class="form-control" name="name" value="{{ $violence_type->name }}" placeholder="{{ $violence_type->name }}">
                         </div>
 
                         <div class="mb-3">
@@ -40,7 +43,9 @@
                             @error('description')
                                 <span class="text text-danger">{{ $message }}</span>
                             @enderror
-                            <textarea name="description" id="" cols="30" rows="10" class="form-control" style="height: 10rem;"></textarea>
+                            <textarea name="description" id="" cols="30" rows="10" class="form-control" style="height: 10rem;">
+                                {{ $violence_type->description }}
+                            </textarea>
                         </div>
                  
                         <button type="submit" class="btn app-btn-primary">Save </button>

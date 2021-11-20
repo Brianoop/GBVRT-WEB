@@ -40,4 +40,46 @@ class ViolenceController extends Controller
         }
 
     }
+
+    public function showViolenceTypesPage()
+    {
+        $violence_types = Violence::paginate(10);
+        return view('dashboard.pages.violence_types', ['violence_types' => $violence_types, 'no' => 1]);
+    }
+
+    public function showEditViolenceTypePage($id)
+    {
+        $violence_type = Violence::find($id);
+
+        return view('dashboard.pages.edit_violence_type', ['violence_type' => $violence_type]);
+    }
+
+    public function updateViolenceType(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer',
+            'name' => 'required|string',
+            'description' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $violence_type = Violence::find($request->id);
+
+        $violence_type->name = $request->name;
+        $violence_type->description = $request->description;
+
+        if($violence_type->save())
+        {
+            return back()->withSuccess('Violence type has been updated successfully.');
+        }
+        else 
+        {
+            return back()->with(['error' => 'Failed to update the violence type.']);
+        }
+
+
+    }
 }
