@@ -82,4 +82,34 @@ class ViolenceController extends Controller
 
 
     }
+
+    public function showConfirmDeleteViolenceTypePage($id)
+    {
+        return view('dashboard.pages.confirm_delete_violence_type', ['id' => $id]);
+    }
+    
+    public function deleteViolenceType(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $violence_type = Violence::find($request->id);
+
+        if($violence_type->delete())
+        {
+            return redirect()->route('violence.types.view')->withSuccess('Deleted violence type ' . $violence_type->name . ' successfully!');
+        }
+        else 
+        {
+            return back()->with(['error' => 'Failed to delete the Violence Type.']);
+        }
+    }
+
+   
+
 }

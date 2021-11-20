@@ -41,6 +41,9 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
+
+    
+
     Route::get('/activists', [ActivistsController::class, 'showActivists'])->name('view.activists');
 
     Route::get('/activists-cases', [ActivistsController::class, 'showActivistCases'])->name('activists.cases');
@@ -49,17 +52,38 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::get('/report-activist/{id}', [ActivistsController::class, 'showReportActivist'])->name('activist.report');
 
+
+
+
     Route::get('/report-cases', [UsersController::class, 'showReportCasePage'])->name('report.case');
 
     Route::get('/send-complaint', [UsersController::class, 'showSendComplaintPage'])->name('send.complaint');
 
+
+
+
     Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('user.settings');
 
+
+
+
     Route::get('/account', [AccountController::class, 'showAccountPage'])->name('user.account');
+
+    Route::get('/create-new-user', [AccountController::class, 'showCreateNewUserPage'])->name('user.create');
+
+    Route::post('/create-new-account', [AccountController::class, 'createNewAccount'])->name('account.create');
+
+
+
+
 
     Route::get('/chat', [ChatController::class, 'showChats'])->name('user.chats');
 
     Route::get('/chat-detail', [ChatController::class, 'showChatDetail'])->name('chat.detail');
+
+
+
+
 
     Route::get('/complaints', [ComplaintsController::class, 'showComplaintsPage'])->name('user.complaints');
 
@@ -70,6 +94,12 @@ Route::group(['middleware' => 'auth'], function($router){
     Route::get('/confirm-delete-complaint/{id}', [ComplaintsController::class, 'showConfirmDeleteComplaint']);
 
     Route::delete('/delete-my-complaint', [ComplaintsController::class, 'deleteMyComplaint'])->name('delete.user.complaint');
+
+
+
+
+
+
 
     Route::get('/manage-cases', [CaseController::class, 'showManageCases'])->name('manage.cases');
 
@@ -88,6 +118,10 @@ Route::group(['middleware' => 'auth'], function($router){
     Route::get('/edit-violence-type/{id}', [ViolenceController::class, 'showEditViolenceTypePage'])->name('violence.type.edit');
 
     Route::put('/update-violence-types', [ViolenceController::class, 'updateViolenceType'])->name('violence.type.update');
+
+    Route::get('/confirm-delete-violence-type/{id}', [ViolenceController::class, 'showConfirmDeleteViolenceTypePage'])->name('violence.type.delete.confirm');
+    
+    Route::delete('/delete-violence-type', [ViolenceController::class, 'deleteViolenceType'])->name('violence.type.delete');
 
 
 

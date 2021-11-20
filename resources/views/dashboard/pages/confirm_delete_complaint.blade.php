@@ -24,7 +24,11 @@
                @csrf 
                @method('DELETE')
                <input type="hidden" name="id" value={{ $id }}>
-               <a href="{{ route('my.complaints') }}" class="btn btn-outline-primary text-sm btn-sm">Cancel</a>
+               @if(Auth()->user()->type == 1)
+                   <a href="{{ route('user.complaints') }}" class="btn btn-outline-primary text-sm btn-sm">Cancel</a>
+               @else 
+                     <a href="{{ route('my.complaints') }}" class="btn btn-outline-primary text-sm btn-sm">Cancel</a>
+               @endif
                <input type="submit" class="btn btn-outline-danger text-sm btn-sm" value="Delete">
            </form>
        </div>

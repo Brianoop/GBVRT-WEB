@@ -20,7 +20,14 @@ class ComplaintsController extends Controller
 
     public function showComplaintsPage()
     {
-        return view('dashboard.pages.complaints');
+        $all_complaints = $this->complaints->join('users', 'complaints.users_id', '=', 'users.id')
+        ->select(
+           'complaints.*',
+            'users.name as name')
+        ->paginate(10);
+
+
+        return view('dashboard.pages.complaints',  ['all_complaints' => $all_complaints]);
     }
 
     public function saveComplaint(Request $request)
@@ -67,9 +74,12 @@ class ComplaintsController extends Controller
         $logged_in_users_complaints = $this->complaints::where('users_id', auth()->user()->id)->paginate(10);
 
         return view('dashboard.pages.view_my_complaints', [
-            'users_complaints' => $logged_in_users_complaints
+            'users_complaints' => $logged_in_users_complaints,
+            'no' => 1
         ]);
     }
+
+
 
     public function showConfirmDeleteComplaint($id)
     {
