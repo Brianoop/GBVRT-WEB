@@ -75,6 +75,14 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::get('/accounts', [AccountController::class, 'showAccountsPage'])->name('user.accounts');
 
+    Route::get('/edit-user-account/{id}', [AccountController::class, 'showEditAccountPage'])->name('edit.account');
+
+    Route::put('/update-account', [AccountController::class, 'updateUserAccount'])->name('account.update');
+
+    Route::get('/confirm-delete-user-account/{id}', [AccountController::class, 'showConfirmDeleteUserAccount'])->name('confirm.delete.account');
+
+    Route::delete('/delete-user-account', [AccountController::class, 'deleteUserAccount'])->name('account.delete');
+
 
 
 

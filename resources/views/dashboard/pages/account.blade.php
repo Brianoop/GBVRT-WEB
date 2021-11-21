@@ -28,12 +28,31 @@
 
             <br>
 
+            <label for="Contact" class="mb-1">Contact</label>
+            <strong>{{ Auth()->user()->contact != null ? Auth()->user()->contact : 'Not Available' }}</strong>
+
+            <br>
+
+            <label for="Avatar" class="mb-1">Avatar</label>
+            @if(Auth()->user()->avatar != null)
+
+                <img src="{{ asset(Auth()->user()->avatar) }}" alt="Avatar" width="150" height="170">
+
+            @else 
+                <strong>Not Available</strong>
+            @endif
+
+            <br>
+
             <label for="Role" class="mb-1">Role</label>
             <strong>
                 @if(Auth()->user()->type == 1) Administrator @endif
                 @if(Auth()->user()->type == 2) Activist @endif
                 @if(Auth()->user()->type == 3) User @endif
             </strong>
+
+            <br>
+            <a href="{{ url('/edit-user-account' . '/' . Auth()->user()->id ) }}" class="btn btn-warning btn-sm">Edit Account</a>
 
         </div>
     </div>

@@ -15,6 +15,15 @@
 
         <br> <br>
 
+        @if(Session::has('success'))
+             <span class="text text-success">{{ Session::get('success') }}</span>
+            <br><br>
+        @elseif (Session::has('error'))
+            <span class="text text-danger">{{ Session::get('error') }}</span>
+            <br> <br>
+        @endif
+            
+
         <div class="card p-4">
           
 
@@ -67,10 +76,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{ url('/edit-user-account' . '/' . $account->id ) }}" class="btn btn-sm btn-warning">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ url('/confirm-delete-user-account' . '/' . $account->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
 
