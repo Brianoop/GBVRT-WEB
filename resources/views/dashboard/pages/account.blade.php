@@ -10,7 +10,7 @@
     <div class="container">
 
          @if(Auth()->user()->type == 1)
-            <a href="{{ route('user.create') }}" class="btn btn-info btn-sm">Create New Account</a> 
+            <a href="{{ route('user.create') }}" class="btn btn-info btn-sm">Create New Account</a> <a href="{{ route('user.accounts') }}" class="btn btn-info btn-sm">View Accounts</a> 
          @endif
 
         <br> <br>

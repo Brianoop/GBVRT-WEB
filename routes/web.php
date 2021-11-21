@@ -73,6 +73,8 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::post('/create-new-account', [AccountController::class, 'createNewAccount'])->name('account.create');
 
+    Route::get('/accounts', [AccountController::class, 'showAccountsPage'])->name('user.accounts');
+
 
 
 

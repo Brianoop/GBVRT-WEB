@@ -50,4 +50,11 @@ class AccountController extends Controller
             return back()->with(['error' => 'Failed to create the user account.']);
         }
     }
+
+    public function showAccountsPage()
+    {
+        $user_accounts = User::paginate(20);
+
+        return view('dashboard.pages.accounts',['user_accounts' => $user_accounts, 'no' => 1]);
+    }
 }
