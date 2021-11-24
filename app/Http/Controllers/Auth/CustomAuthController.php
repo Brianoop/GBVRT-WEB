@@ -97,12 +97,15 @@ class CustomAuthController extends Controller
     public function customRegistration(Request $request)
     {  
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
            
         $data = $request->all();
+
+        
+
         $check = $this->create($data);
          
         return redirect("signup")->withSuccess('You have registered');
@@ -111,11 +114,19 @@ class CustomAuthController extends Controller
 
     public function create(array $data)
     {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password'])
-      ]);
+    $user = new User();
+
+    $user->name = $data['name'];
+    $user->email = $data['email'];
+    $user->password = Hash::make($data['password']);
+
+    return $user->save();
+
+    //   return User::create([
+    //     'name' => $data['name'],
+    //     'email' => $data['email'],
+    //     'password' => Hash::make($data['password'])
+    //   ]);
     }    
     
 
