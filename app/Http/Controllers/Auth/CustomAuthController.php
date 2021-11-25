@@ -99,6 +99,7 @@ class CustomAuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
+            'contact' => 'required|numeric|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
            
@@ -118,6 +119,7 @@ class CustomAuthController extends Controller
 
     $user->name = $data['name'];
     $user->email = $data['email'];
+    $user->contact = $data['contact'];
     $user->password = Hash::make($data['password']);
 
     return $user->save();

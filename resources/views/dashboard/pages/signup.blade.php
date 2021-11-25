@@ -57,6 +57,15 @@
 								<input id="signup-email" name="email" type="email" class="form-control signup-email" placeholder="Email" value="{{ old('email') }}" required="required">
 							</div>
 
+							@if ($errors->has('contact'))
+							   <span class="text-danger">{{ $errors->first('contact') }}</span>
+						    @endif
+
+							<div class="email mb-3">
+								<label class="sr-only" for="signup-email">Your Contact</label>
+								<input id="signup-contact" name="contact" type="text" class="form-control signup-contact" placeholder="Contact" value="{{ old('contact') }}" required="required">
+							</div>
+
 							@if ($errors->has('password'))
 								<span class="text-danger">{{ $errors->first('password') }}</span>
 						    @endif

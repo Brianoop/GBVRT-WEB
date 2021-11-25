@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\ActivistData;
 use App\Models\ActivistServices;
+use App\Models\CaseReceiver;
+use App\Models\CaseMedia;
+use App\Models\UserCase;
 use Illuminate\Http\Request;
 
 class ActivistsController extends Controller
@@ -12,6 +15,7 @@ class ActivistsController extends Controller
     private $users;
     private $activist_data;
     private $activist_services;
+
 
     public function __construct(User $users, ActivistData $activist_data, ActivistServices $activist_services)
     {
@@ -39,9 +43,41 @@ class ActivistsController extends Controller
         return view('dashboard.pages.view_activists', ['activists' =>  $detailed_activist_list]);
     }
 
-    public function showActivistCases()
+    public function showActivistCases($id)
     {
-        return view('dashboard.pages.activists_cases');
+
+        $all_cases = User::join('user_cases', 'users.id', '=', 'user_cases.users_id')
+        ->join('violences', 'violences.id', '=', 'user_cases.violences_id')
+        ->join('sub_counties', 'sub_counties.id', '=', 'user_cases.sub_counties_id')
+        ->select(
+            'users.*',
+            'sub_counties.name as sub_county_name',
+            'user_cases.id as case_id',
+            'violences.name as violence_name',
+            'violences.description as violence_description',
+            'user_cases.details as users_case_details',
+        )
+        ->get();
+
+        $new_list_of_activist_cases = [];
+         
+        $case_receivers_ids = CaseReceiver::where('users_id', $id);
+
+        foreach($all_case_receivers as $case_reiver)
+        {
+            foreach($all_cases as $case)
+            {
+                if(true)
+                {
+
+                }
+            }
+        }
+
+
+        return response()->json($activist_cases, 200);
+
+        return view('dashboard.pages.activists_cases', ['user_cases' => $activist_cases]);
     }
 
     public function showActivistDetails($id)
@@ -75,6 +111,8 @@ class ActivistsController extends Controller
             'id' => $id
         ]);
     }
+
+
 
     
 }
