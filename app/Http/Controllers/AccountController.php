@@ -98,7 +98,7 @@ class AccountController extends Controller
 
             if($user !== null && $user_account->email !== $request->email)
             {
-                return back()->with(['error' => 'The new email is associated with another user account.']);
+              //  return back()->with(['error' => 'The new email is associated with another user account.']);
             }
             else 
             {
@@ -106,6 +106,12 @@ class AccountController extends Controller
             }
 
         }
+
+        if(!empty($request->type) )
+        {
+            $user_account->type = $request->type;
+        }
+
 
         if(!empty($request->password))
         {

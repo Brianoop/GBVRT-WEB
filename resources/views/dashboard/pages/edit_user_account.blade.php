@@ -34,7 +34,7 @@
                                     @csrf 
                                     @method('PUT')    
 
-                                    <input type="hidden" name="id" value="{{ Auth()->user()->id }}">
+                                    <input type="hidden" name="id" value="{{ $user_account->name }}">
         
                                     @if ($errors->has('name'))
                                       <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -80,7 +80,7 @@
                                     </div>
 
                                  @else 
-                                    <input type="hidden" name="type" value="{{ Auth()->user()->type }}">
+                                    <input type="hidden" name="type" value="{{ $user_account->type }}">
                                  @endif
         
                                     @if ($errors->has('password'))
