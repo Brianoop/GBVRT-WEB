@@ -33,6 +33,10 @@ Route::get('/', [LandingPageController::class, 'index']);
 
 Route::get('/charts', [LandingPageController::class, 'chartsPage']);
 
+Route::get('/visuals', [LandingPageController::class, 'visualsPage']);
+
+Route::get('/sleek', [LandingPageController::class, 'sleekPage']);
+
 Route::get('/login', [CustomAuthController::class, 'showLoginPage'])->name('login.page');
 
 Route::get('/signup', [CustomAuthController::class, 'showSignupPage'])->name('signup.page');
