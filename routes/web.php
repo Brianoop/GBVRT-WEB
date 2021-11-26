@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::get('/activists', [ActivistsController::class, 'showActivists'])->name('view.activists');
 
-    Route::get('/activists-cases', [ActivistsController::class, 'showActivistCases'])->name('activists.cases');
+    Route::get('/activists-cases/{id}', [ActivistsController::class, 'showActivistCases'])->name('activists.cases');
 
     Route::get('/activist-details/{id}', [ActivistsController::class, 'showActivistDetails'])->name('activist.details');
 
