@@ -11,5 +11,10 @@ class LandingPageController extends Controller
         return view('landing_page');
     }
 
+    public function chartsPage()
+    {
+        return view('chart');
+    }
+
 
 }

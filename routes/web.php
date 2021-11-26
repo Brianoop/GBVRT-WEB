@@ -31,6 +31,8 @@ use App\Http\Controllers\ReportedUsersController;
 
 Route::get('/', [LandingPageController::class, 'index']);
 
+Route::get('/charts', [LandingPageController::class, 'chartsPage']);
+
 Route::get('/login', [CustomAuthController::class, 'showLoginPage'])->name('login.page');
 
 Route::get('/signup', [CustomAuthController::class, 'showSignupPage'])->name('signup.page');
