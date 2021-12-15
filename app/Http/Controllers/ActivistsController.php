@@ -61,23 +61,20 @@ class ActivistsController extends Controller
 
         $new_list_of_activist_cases = [];
          
-        $case_receivers_ids = CaseReceiver::where('users_id', $id);
-
-        foreach($all_case_receivers as $case_reiver)
+        $case_receivers = CaseReceiver::where('users_id', $id)->get();
+        
+        foreach($all_cases as $case)
         {
-            foreach($all_cases as $case)
+            foreach($case_receivers as $receiver) 
             {
-                if(true)
+                if($case->case_id == $receiver->user_cases_id)
                 {
-
+                    array_push($new_list_of_activist_cases, $case);
                 }
             }
         }
 
-
-        return response()->json($activist_cases, 200);
-
-        return view('dashboard.pages.activists_cases', ['user_cases' => $activist_cases]);
+        return view('dashboard.pages.activists_cases', ['user_cases' => $new_list_of_activist_cases]);
     }
 
     public function showActivistDetails($id)

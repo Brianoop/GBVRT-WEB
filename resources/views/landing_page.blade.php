@@ -193,8 +193,12 @@
             <div class="license-inner">
             <h2 class="title text-center">How To Use GBVRT</h2>
                 <div class="info">
-                    <p>This Bootstrap theme is made by UX/UI designer <a href="https://twitter.com/3rdwave_themes" target="_blank">Xiaoying Riley</a> at 3rd Wave Media for developers and is <strong>100% FREE</strong> as long as you keep the footer attribution link.</p>
-                    <p><strong>[Tip for developers]:</strong> If your project is open source, you might want to put a <a href="https://www.paypal.com/us/cgi-bin/?cmd=_donate-intro-outside" target="_blank">PayPal "Donate" button</a> below so your users can express their gratitude. If your project is commercial, you can put a <a href="https://www.paypal.com/us/cgi-bin/webscr?cmd=_singleitem-intro-outside" target="_blank">PayPal "Buy Now" button</a> instead.</p>
+                    <p>Register using the Sign Up Button below to create an Account.
+                       Then Login with your created email and password.
+                       In the dashboard, click the Report Case button and Enter Report in 
+                       the fields.
+                    </p>
+                    
                 </div><!--//info-->
                 <div class="cta-container">
                     <div class="speech-bubble">                    
@@ -214,33 +218,14 @@
         <div class="container">
             <div class="contact-inner">
                 <h2 class="title  text-center">Contact Us</h2>
-                <p class="intro  text-center">Contact us today by sending us an email or give us a call at any time.<br />Feel free to get in touch if you have any questions or suggestions.</p>
-                <div class="author-message">                      
-                    <div class="profile">
-                        <img class="img-fluid" src="{{ asset('landing_page_assets/assets/images/profile.png') }}" alt="" />
-                    </div><!--//profile-->
-                    <div class="speech-bubble">
-                        <h3 class="sub-title">Why we built GBVRT</h3>
-                        <p>After seeing the  ever increasing number of gender based violence cases in Gulu Sub Region, a team of competent software engineers sat down and came up with a software tool that would help the possible victims of this violence to report the cases so that our partner organisations could try to follow up on the cases and take necessary actions against the offenders.</p>
-          
-                        <div class="source">
-                            <span class="name"><a href="" target="_blank">Saraphina Akwii</a></span>
-                            <br />
-                            <span class="title">Software Engineer</span>
-                        </div><!--//source-->
-                    </div><!--//speech-bubble-->                        
-                </div><!--//author-message-->
+                <p class="intro  text-center">Contact us today by sending us an email or give us a call at any time.<br />Feel free to get in touch if you have any questions or suggestions.
+                <br /> <br /> Telephone: +256 765 5354 334. <br />Email: gbvrt@gmail.com</p>
+                
+                
+                
+               
                 <div class="clearfix"></div>
-                <div class="info text-center">
-                    <h4 class="sub-title">Get Connected</h4>
-                    <ul class="social-icons list-inline">
-                        <li class="list-inline-item"><a href="" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="" target="_blank"><i class="fab fa-medium-m"></i></a></li> 
-                        <li class="list-inline-item"><a href="" target="_blank"><i class="fab fa-dribbble"></i></a></li>  
-                        <li class="list-inline-item last"><a href="" target="_blank"><i class="fas fa-envelope"></i></a></li>           
-                    </ul>
-                </div><!--//info-->
+                
             </div><!--//contact-inner-->
         </div><!--//container-->
     </section><!--//contact-->  
@@ -248,7 +233,7 @@
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
-            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+            <small class="copyright"><span>&#169</span> GBVRT SYSTEM 2021</small>
         </div><!--//container-->
     </footer><!--//footer-->
      
