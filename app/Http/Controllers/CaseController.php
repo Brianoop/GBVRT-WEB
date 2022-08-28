@@ -20,8 +20,10 @@ class CaseController extends Controller
 
     public function showManageCases()
     {
-       
-        return view('dashboard.pages.manage_cases');
+       $case_number = UserCase::get()->count();
+       $cases = UserCase::paginate(10);
+
+        return view('dashboard.pages.manage_cases', ['cases' => $cases, 'case_number' => $case_number]);
     }
 
     public function showAdminCaseDetailPage()
@@ -34,8 +36,10 @@ class CaseController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'sub_county' => 'required|integer',
-            'violence' => 'required|integer',
+            'user_id' => 'required|integer',
+            'victim_name' => 'required|string',
+            'victim_location' => 'required|string',
+            'victim_contact' => 'required|string',
             'details' => 'required|string',
             'activist' => 'required|integer',
             'files.*' => 'max:20000'
@@ -48,11 +52,13 @@ class CaseController extends Controller
 
         $user_case = new UserCase();
 
-        $user_case->users_id = $request->user()->id;
+        $user_case->users_id = $request->user_id;
 
-        $user_case->violences_id = $request->violence;
+        $user_case->victim_name = $request->victim_name;
 
-        $user_case->sub_counties_id = $request->sub_county;
+        $user_case->victim_location = $request->victim_location;
+
+        $user_case->victim_contact = $request->victim_contact;
 
         $user_case->details = $request->details;
 

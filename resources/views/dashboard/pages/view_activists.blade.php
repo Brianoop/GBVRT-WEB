@@ -25,7 +25,7 @@
                             <div class="col-12 col-lg-auto text-center text-lg-start">
                                 <div class="notification-type mb-2"><span class="badge bg-info">{{ $activist->activist_name }}</span>
                                 </div>
-                                <h4 class="notification-title mb-1">{{ $activist->organisation_name }}</h4>
+                                <h4 class="notification-title mb-1">{{ $activist->organisation_name ?? 'Organization' }}</h4>
     
                                 <ul class="notification-meta list-inline mb-0">
                                     <li class="list-inline-item">Joined {{ $activist->created_at->diffForHumans() }}</li>
@@ -51,6 +51,10 @@
 
             {!! $activists->links() !!}
 
+        @else 
+            <div class="alert alert-info">
+                There are currently no available activists.
+            </div>
         @endif
 
        

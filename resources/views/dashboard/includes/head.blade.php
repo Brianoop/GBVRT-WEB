@@ -9,6 +9,8 @@
 <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
 <link rel="shortcut icon" href="favicon.ico"> 
 
+<script src="{{ asset('dashboard_assets/js/jquery-3.5.1.js') }}"></script>
+
 <!-- FontAwesome JS-->
 <script defer src="{{ asset('dashboard_assets/plugins/fontawesome/js/all.min.js') }}"></script>
 

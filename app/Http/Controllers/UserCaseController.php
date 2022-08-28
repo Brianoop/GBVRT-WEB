@@ -34,28 +34,14 @@ class UserCaseController extends Controller
     public function showUserCasesPage()
     {
 
-        $logged_in_users_cases = $this->user_cases->join('violences', 'user_cases.violences_id', '=', 'violences.id')
-        ->join('sub_counties', 'sub_counties.id', '=', 'user_cases.sub_counties_id')
-        ->where('user_cases.users_id', '=', auth()->user()->id)->select(
-            'user_cases.id  as case_id',
-            'user_cases.details as case_details',
-            'violences.name as violence_name',
-            'violences.description as violence_description',
-            'sub_counties.name as sub_county' 
-        )
+        $logged_in_users_cases = $this->user_cases
+        ->where('users_id', '=', auth()->user()->id)
         ->count();
         
         $total =  $logged_in_users_cases;
 
-        $logged_in_users_cases = $this->user_cases->join('violences', 'user_cases.violences_id', '=', 'violences.id')
-        ->join('sub_counties', 'sub_counties.id', '=', 'user_cases.sub_counties_id')
-        ->where('user_cases.users_id', '=', auth()->user()->id)->select(
-            'user_cases.id  as case_id',
-            'user_cases.details as case_details',
-            'violences.name as violence_name',
-            'violences.description as violence_description',
-            'sub_counties.name as sub_county' 
-        )
+        $logged_in_users_cases = $this->user_cases
+        ->where('user_cases.users_id', '=', auth()->user()->id)
         ->paginate(10);
 
          
@@ -68,15 +54,12 @@ class UserCaseController extends Controller
 
     public function showUserCaseDetailPage($id){
 
-        $logged_in_users_case = $this->user_cases->join('violences', 'user_cases.violences_id', '=', 'violences.id')
-        ->join('sub_counties', 'sub_counties.id', '=', 'user_cases.sub_counties_id')
-        ->where('user_cases.id', '=', $id)->select(
-            'user_cases.id  as case_id',
-            'user_cases.details as case_details',
-            'violences.name as violence_name',
-            'violences.description as violence_description',
-            'sub_counties.name as sub_county' 
-        )->first();
+        $logged_in_users_case = $this->user_cases
+        //->join('users', 'user_cases.users_id', '=', 'users.id')
+       // ->join('sub_counties', 'sub_counties.id', '=', 'user_cases.sub_counties_id')
+        ->where('user_cases.id', '=', $id)
+        ->select()
+        ->first();
 
         $case_receivers = $this->case_receivers::where('user_cases_id', $logged_in_users_case->case_id)
         ->select('users_id')
@@ -101,7 +84,8 @@ class UserCaseController extends Controller
                     'activist_data.organisation_name as activist_organisation_name',
                     'activist_data.brief_description as activist_brief_description',
                     'activist_data.detailed_decription as activist_detailed_description'
-                )->first();
+                )
+                ->first();
 
 
                 $case_receiver_services = $this->activist_services::where('users_id', $receiver->users_id)->get();
@@ -123,17 +107,18 @@ class UserCaseController extends Controller
         ]);
     }
 
-    public function showConfirmDeleteCasePage($id)
-    {
-        return view('dashboard.pages.confirm_delete_case', ['id' => $id]);
-    }
+  
 
 
     function deleteUserCase(Request $request)
     {
+        $request->validate([
+            'case_id' => 'required|string'
+        ]);
+
         try
         {
-            $user_case = $this->user_cases::findOrFail($request->id);
+            $user_case = $this->user_cases::findOrFail($request->case_id);
         }
         catch(ModelNotFoundException $e)
         {
@@ -142,11 +127,13 @@ class UserCaseController extends Controller
 
         if($user_case->delete())
         {
-            return redirect('/user-cases');
+            return response()->json("success");
+            
         }
         else 
         {
-            return back();
+            return response()->json("failed!");
+           
         }
     }
 

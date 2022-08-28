@@ -27,7 +27,7 @@ class ActivistsController extends Controller
     public function showActivists()
     {
 
-        $detailed_activist_list = $this->users->join('activist_data', 'activist_data.users_id', '=', 'users.id')
+        $detailed_activist_list = $this->users
         ->where('users.type', 2)
         ->select(
             'users.id as activist_id',
@@ -36,8 +36,9 @@ class ActivistsController extends Controller
             'users.contact as activist_contact',
             'users.avatar as activist_avatar',
             'users.created_at as created_at',
-            'activist_data.organisation_name as organisation_name',
-            'activist_data.brief_description as brief_description'
+            'users.organisation_name as organisation_name',
+            'users.brief_description as brief_description',
+            'users.detailed_description as detailed_description'
         )->paginate(10);
 
         return view('dashboard.pages.view_activists', ['activists' =>  $detailed_activist_list]);
@@ -79,7 +80,7 @@ class ActivistsController extends Controller
 
     public function showActivistDetails($id)
     {
-        $activist_details = $this->users->join('activist_data', 'activist_data.users_id', '=', 'users.id')
+        $activist_details = $this->users
         ->where('users.type', 2)
         ->where('users.id', $id)
         ->select(
@@ -89,10 +90,11 @@ class ActivistsController extends Controller
             'users.contact as activist_contact',
             'users.avatar as activist_avatar',
             'users.created_at as created_at',
-            'activist_data.organisation_name as organisation_name',
-            'activist_data.brief_description as brief_description',
-            'activist_data.detailed_decription as detailed_description'
-        )->first();
+            'users.organisation_name as organisation_name',
+            'users.brief_description as brief_description',
+            'users.detailed_description as detailed_description'
+        )
+        ->first();
 
         $activist_services = $this->activist_services::where('users_id', $id)->get();
 

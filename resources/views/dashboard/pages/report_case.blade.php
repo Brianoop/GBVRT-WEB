@@ -11,9 +11,13 @@
         <div class="col-md-12">
             <div class="app-card app-card-settings shadow-sm p-4">
                    @if(Session::has('success'))
-                        <span class="text text-success">{{ Session::get('success') }}</span>
+                        <div class="alert alert-success">
+                            <span class="text text-success">{{ Session::get('success') }}</span>
+                        </div>
                    @elseif (Session::has('error'))
-                        <span class="text text-danger">{{ Session::get('error') }}</span>
+                        <div class="alert alert-danger">
+                            <span class="text text-danger">{{ Session::get('error') }}</span>
+                        </div>
                    @endif
 
 
@@ -22,43 +26,33 @@
                         @csrf
                         @method('POST')
 
+                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+
                         <div class="mb-3">
-                            <label for="setting-input-1" class="form-label">Location<span class="ms-2"
-                                    data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top"
-                                    data-content="This is a Bootstrap popover example. You can use popover to provide extra info."></span></label>
-                            @error('sub_county')
+                            <label for="setting-input-2" class="form-label">Location of incident</label>
+                            @error('victim_location')
                                 <span class="text text-danger">{{ $message }}</span>
                             @enderror
-                            <select name="sub_county" id="sub_county" class="form-control">
-                                <option value="">Select Subcounty</option>
-                                @if(count($sub_counties) > 0)
-
-                                    @foreach($sub_counties as $sub_county)
-
-                                        <option value="{{ $sub_county->id }}">{{ $sub_county->name }}</option>
-
-                                    @endforeach
-
-                                @endif
-                                
-                            </select>
+                            <input type="text" class="form-control" placeholder="Location" name="victim_location">
                         </div>
+
                         <div class="mb-3">
-                            <label for="Violence Type" class="form-label">Violence Type</label>
-                            <select name="violence" id="violence" class="form-control">
-                                <option value="">Select Violence Type</option>
-                                @if(count($violence) > 0)
-
-                                    @foreach($violence as $offense)
-
-                                        <option value="{{ $offense->id }}">{{ $offense->name }}</option>
-
-                                    @endforeach
-
-                                @endif
-                                
-                            </select>
+                            <label for="setting-input-2" class="form-label">Name of affected person</label>
+                            @error('victim_name')
+                                <span class="text text-danger">{{ $message }}</span>
+                            @enderror
+                            <input type="text" class="form-control" placeholder="{{ auth()->user()->name }}" name="victim_name">
                         </div>
+
+                        <div class="mb-3">
+                            <label for="setting-input-2" class="form-label">Phone number to reach you on</label>
+                            @error('victim_contact')
+                                <span class="text text-danger">{{ $message }}</span>
+                            @enderror
+                            <input type="text" class="form-control" placeholder="Your contact" name="victim_contact">
+                        </div>
+
+                     
 
                         <div class="mb-3">
                             <label for="setting-input-2" class="form-label">Details of offense</label>

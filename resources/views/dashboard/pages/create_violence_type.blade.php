@@ -12,9 +12,14 @@
         <div class="col-md-12">
             <div class="app-card app-card-settings shadow-sm p-4">
                    @if(Session::has('success'))
-                        <span class="text text-success">{{ Session::get('success') }}</span>
+                        <div class="alert alert-success">
+                            <span class="text text-success">{{ Session::get('success') }}</span>
+                        </div>
                    @elseif (Session::has('error'))
-                        <span class="text text-danger">{{ Session::get('error') }}</span>
+                        <div class="alert alert-success">
+                            <span class="text text-danger">{{ Session::get('error') }}</span>
+                        </div>
+                       
                    @endif
 
 

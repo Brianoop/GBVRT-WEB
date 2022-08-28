@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Complaints;
+use App\Models\SubCounties;
+use App\Models\Violence;
+use App\Models\ActivistData;
+use App\Models\ActivistServices;
 
 class CustomAuthController extends Controller
 {
@@ -115,14 +120,14 @@ class CustomAuthController extends Controller
 
     public function create(array $data)
     {
-    $user = new User();
+        $user = new User();
 
-    $user->name = $data['name'];
-    $user->email = $data['email'];
-    $user->contact = $data['contact'];
-    $user->password = Hash::make($data['password']);
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->contact = $data['contact'];
+        $user->password = Hash::make($data['password']);
 
-    return $user->save();
+        return $user->save();
 
     //   return User::create([
     //     'name' => $data['name'],

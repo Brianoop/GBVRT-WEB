@@ -14,7 +14,10 @@ class UsersController extends Controller
 
     public function showReportCasePage()
     {
-        return view('dashboard.pages.report_case', ['activists' => User::where('type', 2)->get(), 'violence' => Violence::all(), 'sub_counties' => SubCounties::all()]);
+        return view('dashboard.pages.report_case', 
+        ['activists' => User::where('type', 2)->get(),
+         'violence' => Violence::all(), 
+         'sub_counties' => SubCounties::all()]);
     }
 
     public function showSendComplaintPage()

@@ -46,10 +46,6 @@ Route::get('/forgot-password', [CustomAuthController::class, 'showForgotPassword
 Route::group(['middleware' => 'auth'], function($router){
 
     Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
-
-
-    
-
     Route::get('/activists', [ActivistsController::class, 'showActivists'])->name('view.activists');
 
     Route::get('/activists-cases/{id}', [ActivistsController::class, 'showActivistCases'])->name('activists.cases');
@@ -93,7 +89,12 @@ Route::group(['middleware' => 'auth'], function($router){
 
 
 
-    Route::get('/chat', [ChatController::class, 'showChats'])->name('user.chats');
+    Route::get('/chats', [ChatController::class, 'showChats'])->name('user.chats');
+
+    Route::get('/chat', [ChatController::class, 'showChatPage']);
+
+    Route::post('/send-chat-message', [ChatController::class, 'saveChatMessage']);
+
 
     Route::get('/chat-detail', [ChatController::class, 'showChatDetail'])->name('chat.detail');
 
