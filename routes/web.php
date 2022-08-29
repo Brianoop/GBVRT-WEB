@@ -98,8 +98,8 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::get('/chat-detail', [ChatController::class, 'showChatDetail'])->name('chat.detail');
 
-
-
+   
+    
 
 
     Route::get('/complaints', [ComplaintsController::class, 'showComplaintsPage'])->name('user.complaints');
@@ -187,3 +187,4 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 
 
+Route::post('/send-sms', [ChatController::class, 'sendSMS']);

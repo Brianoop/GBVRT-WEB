@@ -14,11 +14,8 @@
             @isset($chat_messages)
 
                 @foreach($chat_messages as $chat_message)
-                    <div class="card mt-2 mb-2 p-2 shadow-sm">
-                        <div style="display: flex; align-items: start; padding-bottom: 0.5rem;">
-                            <img src="" alt="Avatar" class="right" style="padding-right: 0.8rem;">
-                            <strong class="pl-4">Akwii Saraphina</strong>
-                        </div>
+                    <div class='{{ $chat_message->sent_by == auth()->user()->id ? "alert alert-success text-sm" : "alert alert-info text-sm" }}'>
+                        {{ $chat_message->sent_by == auth()->user()->id ? 'from me' : 'to me'}} <br>
                         <p>{{ $chat_message->message }}</p>
                         <span class="time-right">{{ $chat_message->created_at->diffForHumans() }}</span>
                     </div>
@@ -76,11 +73,12 @@
                         success: function(response) {
                             console.log(response);
                             document.getElementById('message').value = "";
-                            alert(response);
+                           // alert(response);
+                           window.location.reload();
                         },
                         error: function(data, textStatus, errorThrown) {
                             console.log(data);
-                            alert(data);
+                           // alert(data);
 
 
                         },
