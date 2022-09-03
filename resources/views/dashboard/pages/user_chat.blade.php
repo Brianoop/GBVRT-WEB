@@ -73,6 +73,7 @@
                         success: function(response) {
                             console.log(response);
                             document.getElementById('message').value = "";
+
                            // alert(response);
                            window.location.reload();
                         },
@@ -87,6 +88,34 @@
                 });
 
             });
+
+
+            function sendSMS(title, contact, message)
+            {
+                $.ajax({
+                        type: "POST",
+                        url: "{{ URL::to('send-sms') }}",
+                        data: JSON.stringify({
+                            title,
+                            contact,
+                            message,
+                            _token
+                        }),
+                        contentType: "application/json",
+                        processData: true,
+                        success: function(response) {
+                            console.log(response);
+                           // window.location.reload();
+                            alert("SMS Sent!")
+                        },
+                        error: function(data, textStatus, errorThrown) {
+                            console.log(data);
+                           // alert(data);
+
+
+                        },
+                    });
+            }
 
          
     </script>

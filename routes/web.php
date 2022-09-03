@@ -176,6 +176,8 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::post('/report-an-activist', [ReportedUsersController::class, 'reportAUser'])->name('report.activist');
 
+    Route::get('/dashboard-stats', [CustomAuthController::class, 'getDashboardStatistics'])->name('dashboard.stats');
+
 });
 
 Route::get('/dashboard-home', [CustomAuthController::class, 'showDashboardHome'])->name('dashboard.home');

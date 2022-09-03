@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Chat;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Complaints;
 use App\Models\SubCounties;
 use App\Models\Violence;
+use App\Models\UserCase;
+use App\Models\ReportedUsers;
 use App\Models\ActivistData;
 use App\Models\ActivistServices;
 
@@ -91,8 +94,6 @@ class CustomAuthController extends Controller
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
-
-
     public function registration()
     {
         return view('dashboard.pages.signup');
@@ -158,5 +159,44 @@ class CustomAuthController extends Controller
       $request->session()->regenerateToken();
 
       return redirect('/');
+    }
+
+    public function getDashboardStatistics(Request $request)
+    {
+        $my_total_complaints = Complaints::where('users_id', auth()->user()->id)->get()->count();
+        $my_total_cases = UserCase::where('users_id', auth()->user()->id)->get()->count();
+        $my_total_chats = Chat::where(function($q) {
+            $q->where('created_by', auth()->user()->id)
+              ->orWhere('chatting_with', auth()->user()->id);
+        })
+        ->get()
+        ->count();
+
+        $total_cases = UserCase::get()->count();
+
+        
+        $total_reported_users = ReportedUsers::get()->count();
+        $total_cases = UserCase::get()->count();
+        $total_users = User::get()->count();
+        $total_activists = User::where('type', 2)->get()->count();
+        $total_victims = User::where('type', 3)->get()->count();
+        $total_complaints = Complaints::get()->count();
+        $total_chats = Chat::get()->count();
+
+        
+
+        return response()->json([
+            'my_total_cases' => $my_total_cases,
+            'my_total_complaints' => $total_complaints,
+            'my_total_chats' => $my_total_chats,
+            'total_activists' => $total_activists,
+            'total_victims' => $total_victims,
+            'total_reported_users' => $total_reported_users,
+            'sms_balance' => 578,
+            'total_users' => $total_users,
+            'total_cases' => $total_cases,
+            'total_chats' => $total_chats,
+            'total_complaints' => $total_complaints
+        ]);
     }
 }
