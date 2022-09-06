@@ -22,7 +22,16 @@ class CaseController extends Controller
     public function showManageCases()
     {
        $case_number = UserCase::get()->count();
-       $cases = UserCase::paginate(10);
+       $cases = UserCase::join('users', 'users.id', '=', 'user_cases.users_id')
+       ->select(
+        'users.id as user_id',
+        'users.name',
+        'users.contact',
+        'users.email',
+        'user_cases.*')
+       ->paginate(6);
+
+   
 
         return view('dashboard.pages.manage_cases', ['cases' => $cases, 'case_number' => $case_number]);
     }

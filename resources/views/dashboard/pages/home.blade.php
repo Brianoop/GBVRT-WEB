@@ -448,7 +448,7 @@
             </div>
            
 
-            <div class="row g-4 mb-4">
+            {{-- <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-4">
                     <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
                         <div class="app-card-header p-3 border-bottom-0">
@@ -482,7 +482,7 @@
                         </div>
                         <!--//app-card-body-->
                         <div class="app-card-footer p-4 mt-auto">
-                            <a class="btn app-btn-secondary" href="#">Manage Users</a>
+                            <a class="btn app-btn-secondary" href="{{ route('user.account') }}">Manage Users</a>
                         </div>
                         <!--//app-card-footer-->
                     </div>
@@ -568,7 +568,7 @@
                     <!--//app-card-->
                 </div>
                 <!--//col-->
-            </div>
+            </div> --}}
         @endif
     </div>
  

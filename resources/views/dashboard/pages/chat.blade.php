@@ -9,25 +9,31 @@
 
     <div class="row">
         <div class="col-md-12">
-           
+
             @isset($chats)
-                @foreach($chats as $chat)
-                    <div class="card darker mt-2 mb-2 p-2 shadow-sm">
-                        <div style="display: flex; align-items: start; padding-bottom: 0.5rem;">
-                            <strong class="pl-4">{{ $chat->creator->name . ' with ' . $chat->chatter->name}} </strong>
+                @if (count($chats) > 0)
+                    @foreach ($chats as $chat)
+                        <div class="card darker mt-2 mb-2 p-2 shadow-sm">
+                            <div style="display: flex; align-items: start; padding-bottom: 0.5rem;">
+                                <strong class="pl-4">{{ $chat->creator->name . ' with ' . $chat->chatter->name }} </strong>
+                            </div>
+
+                            @if (auth()->user()->id == $chat->creator->id)
+                                <a href="{{ url('/chat?uid=' . $chat->creator->id . '&rid=' . $chat->chatter->id) }}">Open
+                                    chat</a>
+                            @else
+                                <a href="{{ url('/chat?uid=' . $chat->chatter->id . '&rid=' . $chat->creator->id) }}">Open
+                                    chat</a>
+                            @endif
+                            <span class="time-left"> Started chatting on {{ $chat->created_at->diffForHumans() }}</span>
                         </div>
-
-                        @if(auth()->user()->id == $chat->creator->id)
-                           <a href="{{ url('/chat?uid=' . $chat->creator->id . '&rid=' . $chat->chatter->id ) }}">Open chat</a>
-                        @else 
-                           <a href="{{ url('/chat?uid=' . $chat->chatter->id . '&rid=' . $chat->creator->id ) }}">Open chat</a>
-                        @endif
-                        <span class="time-left"> Started chatting on {{ $chat->created_at->diffForHumans() }}</span>
+                    @endforeach
+                @else
+                    <div class="alert alert-info my-4 py-3">
+                        <h5>You currently have no chats.</h5>
                     </div>
-                @endforeach
+                @endif
             @endisset
-
-            
 
         </div>
     </div>
