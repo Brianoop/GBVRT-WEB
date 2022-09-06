@@ -41,6 +41,16 @@
         </div>
     </div>
 
+    @foreach ($activists as $activist)
+        <div class="alert alert-info p-3 my-3">
+            <h6>{{ $activist->activist_name }}</h6>
+            <p>{{ $activist->activist_email }}</p>
+            <p>{{ $activist->activist_contact }}</p>
+            <p>({{ $activist->feedback_count }}) Feedback on this case</p>
+            <a href="{{ url('/user-view-activist-feedback-on-case?case_id=' . $user_case->id . '&activist_id=' . $activist->activist_id ) }}" class="btn btn-success">View Activist</a>
+        </div>
+    @endforeach
+
 
     <script>
         var case_id = "{{ $user_case->id }}";

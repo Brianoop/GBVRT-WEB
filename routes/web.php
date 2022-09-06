@@ -178,6 +178,9 @@ Route::group(['middleware' => 'auth'], function($router){
 
     Route::delete('/delete-user-case', [UserCaseController::class, 'deleteUserCase'])->name('delete.user.case');
 
+
+    Route::get('/user-view-activist-feedback-on-case', [UserCaseController::class, 'showUserViewActivistFeedbackOnCasePage']);
+
     Route::post('/report-an-activist', [ReportedUsersController::class, 'reportAUser'])->name('report.activist');
 
     Route::get('/dashboard-stats', [CustomAuthController::class, 'getDashboardStatistics'])->name('dashboard.stats');
