@@ -31,7 +31,20 @@ class AccountController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->withErrors($validator)->withInput();
+        }
+
+        if($request->type == 2)
+        {
+            $validator = Validator::make($request->all(), [
+                'organisation_name' => 'required|string',
+                'brief_description' => 'required|string',
+                'detailed_description' => 'required|string',
+            ]);
+        }
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
         }
 
         $new_user = new User();
@@ -63,7 +76,7 @@ class AccountController extends Controller
         }
         else 
         {
-            return back()->with(['error' => 'Failed to create the user account.']);
+            return back()->with(['error' => 'Failed to create the user account.'])->withInput();
         }
     }
 

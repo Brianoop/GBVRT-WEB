@@ -22,11 +22,15 @@
                             <h2 class="auth-heading text-center mb-4">Edit Account</h2>
 
                             @if (Session::has('success'))
-                                <span class="text text-success">{{ Session::get('success') }}</span>
-                                <br><br>
+                                <br>
+                                <div class="alert alert-success p-3">
+                                    <span class="text text-success">{{ Session::get('success') }}</span>
+                                </div>
                             @elseif (Session::has('error'))
                                 <br>
-                                <span class="text text-danger">{{ Session::get('error') }}</span>
+                                <div class="alert alert-danger p-3">
+                                    <span class="text text-danger">{{ Session::get('error') }}</span>
+                                </div>
                             @endif
 
                             <div class="auth-form-container text-start mx-auto">
@@ -71,7 +75,7 @@
                                             value="{{ $user_account->contact != null ? $user_account->contact : '' }}">
                                     </div>
 
-                                    
+
 
 
                                     @if (auth()->user()->type == 2)
@@ -113,7 +117,6 @@
                                     @endif
 
                                     @if (auth()->user()->type == 1)
-
                                         @if ($errors->has('type'))
                                             <span class="text-danger">{{ $errors->first('type') }}</span>
                                         @endif
