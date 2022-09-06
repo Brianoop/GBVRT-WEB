@@ -8,6 +8,7 @@ use App\Models\ActivistServices;
 use App\Models\CaseReceiver;
 use App\Models\CaseMedia;
 use App\Models\UserCase;
+use App\Models\CaseFeedback;
 use Illuminate\Http\Request;
 
 class ActivistsController extends Controller
@@ -48,14 +49,11 @@ class ActivistsController extends Controller
     {
 
         $all_cases = User::join('user_cases', 'users.id', '=', 'user_cases.users_id')
-        ->join('violences', 'violences.id', '=', 'user_cases.violences_id')
-        ->join('sub_counties', 'sub_counties.id', '=', 'user_cases.sub_counties_id')
+       // ->join('violences', 'violences.id', '=', 'user_cases.violences_id')
+       // ->join('sub_counties', 'sub_counties.id', '=', 'user_cases.sub_counties_id')
         ->select(
             'users.*',
-            'sub_counties.name as sub_county_name',
             'user_cases.id as case_id',
-            'violences.name as violence_name',
-            'violences.description as violence_description',
             'user_cases.details as users_case_details',
         )
         ->get();
@@ -76,6 +74,34 @@ class ActivistsController extends Controller
         }
 
         return view('dashboard.pages.activists_cases', ['user_cases' => $new_list_of_activist_cases]);
+    }
+
+    public function activistViewCaseDetail($id)
+    {
+        $case = UserCase::join('users', 'users.id', '=', 'user_cases.users_id')
+        ->where('user_cases.id', $id)
+        ->select(
+        'user_cases.*',
+        'users.name',
+        'users.email',
+        'users.contact'
+        )
+        ->first();
+
+       // return $case;
+
+        $feedback = User::join('case_feedback', 'users.id', '=', 'case_feedback.given_by')
+        ->where('case_feedback.case_id', $id)
+        ->select(
+            'users.name',
+            'case_feedback.*'
+        )
+        ->paginate(10);
+
+
+       // return $feedback;
+
+        return view('dashboard.pages.activist_view_case_detail', ['user_case' => $case, 'feedback' => $feedback]);
     }
 
     public function showActivistDetails($id)

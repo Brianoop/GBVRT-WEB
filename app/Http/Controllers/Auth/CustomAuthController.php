@@ -16,6 +16,7 @@ use App\Models\UserCase;
 use App\Models\ReportedUsers;
 use App\Models\ActivistData;
 use App\Models\ActivistServices;
+use App\Models\CaseReceiver;
 
 class CustomAuthController extends Controller
 {
@@ -183,6 +184,9 @@ class CustomAuthController extends Controller
         $total_complaints = Complaints::get()->count();
         $total_chats = Chat::get()->count();
 
+
+        $activists_cases = CaseReceiver::where('users_id', auth()->user()->id)->get()->count();
+
         
 
         return response()->json([
@@ -196,7 +200,8 @@ class CustomAuthController extends Controller
             'total_users' => $total_users,
             'total_cases' => $total_cases,
             'total_chats' => $total_chats,
-            'total_complaints' => $total_complaints
+            'total_complaints' => $total_complaints,
+            'activists'
         ]);
     }
 }

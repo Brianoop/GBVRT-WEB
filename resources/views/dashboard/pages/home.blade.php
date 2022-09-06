@@ -41,7 +41,7 @@
                                             d="M8 6a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 10.293V6.5A.5.5 0 0 1 8 6z" />
                                     </svg>Report Case</a>
                             @elseif (Auth::user()->type == 2)
-                                <a class="btn app-btn-primary" href="#"><svg width="1em" height="1em"
+                                <a class="btn app-btn-primary" href="{{ url('/activists-cases' . '/' . auth()->user()->id) }}"><svg width="1em" height="1em"
                                         viewBox="0 0 16 16" class="bi bi-file-earmark-arrow-down me-2" fill="currentColor"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -71,45 +71,90 @@
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Total Cases</h4>
-                            <div class="stats-figure" id="my_total_cases">58</div>
+                            <div class="stats-figure" id="my_total_cases">0</div>
                           
                         </div>
-                        <!--//app-card-body-->
+                       
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                    <!--//app-card-->
+                  
                 </div>
-                <!--//col-->
+              
 
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Complaints</h4>
-                            <div class="stats-figure" id="my_total_complaints">11</div>
+                            <div class="stats-figure" id="my_total_complaints">0</div>
                             
                         </div>
-                        <!--//app-card-body-->
+                     
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                    <!--//app-card-->
+                  
                 </div>
-                <!--//col-->
+               
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Total Chats</h4>
-                            <div class="stats-figure" id="my_total_chats">207</div>
+                            <div class="stats-figure" id="my_total_chats">0</div>
 
                         </div>
-                        <!--//app-card-body-->
+                      
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                    <!--//app-card-->
+                  
                 </div>
-                <!--//col-->
+               
             </div>
         @endif
-        <!--//row-->
+
+        @if (Auth::user()->type == 2)
+            <div class="row g-4 mb-4" style="margin: auto !important;">
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Total Cases</h4>
+                            <div class="stats-figure" id="my_total_cases">0</div>
+                          
+                        </div>
+                       
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div>
+                  
+                </div>
+              
+
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Complaints</h4>
+                            <div class="stats-figure" id="my_total_complaints">0</div>
+                            
+                        </div>
+                     
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div>
+                  
+                </div>
+               
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Total Chats</h4>
+                            <div class="stats-figure" id="my_total_chats">0</div>
+
+                        </div>
+                      
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div>
+                  
+                </div>
+               
+            </div>
+        @endif
+       
         @if (Auth::user()->type == 1)
             <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-6">
@@ -188,7 +233,7 @@
                 <!--//col-->
 
             </div>
-            <!--//row-->
+           
             <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-6">
                     <div class="app-card app-card-progress-list h-100 shadow-sm">
@@ -401,7 +446,7 @@
                 </div>
                 <!--//col-->
             </div>
-            <!--//row-->
+           
 
             <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-4">
@@ -525,11 +570,8 @@
                 <!--//col-->
             </div>
         @endif
-
-        <!--//row-->
-
     </div>
-    <!--//container-fluid-->
+ 
 
 
     @csrf

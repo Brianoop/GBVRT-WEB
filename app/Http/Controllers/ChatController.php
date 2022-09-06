@@ -27,150 +27,150 @@ class ChatController extends Controller
         
     }
 
-    public function loginToSMSPortal($email, $password, $end_point)
-    {
-        $pay_load = array(
-            'email' => $email,
-            'password' => $password,
-            'password_confirmation' => $password
-        );
+    // public function loginToSMSPortal($email, $password, $end_point)
+    // {
+    //     $pay_load = array(
+    //         'email' => $email,
+    //         'password' => $password,
+    //         'password_confirmation' => $password
+    //     );
 
        
 
-        $curl = curl_init();
+    //     $curl = curl_init();
 
-        // We POST the data
-        curl_setopt($curl, CURLOPT_POST, 1);
-        // Set the url path we want to call
-        curl_setopt($curl, CURLOPT_URL, $end_point);
-        // Make it so the data coming back is put into a string
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // Insert the data
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $pay_load);
+    //     // We POST the data
+    //     curl_setopt($curl, CURLOPT_POST, 1);
+    //     // Set the url path we want to call
+    //     curl_setopt($curl, CURLOPT_URL, $end_point);
+    //     // Make it so the data coming back is put into a string
+    //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    //     // Insert the data
+    //     curl_setopt($curl, CURLOPT_POSTFIELDS, $pay_load);
 
-        // You can also bunch the above commands into an array if you choose using: curl_setopt_array
+    //     // You can also bunch the above commands into an array if you choose using: curl_setopt_array
 
-        // Send the request
-        $result = curl_exec($curl);
+    //     // Send the request
+    //     $result = curl_exec($curl);
 
-        // Get some cURL session information back
-        $info = curl_getinfo($curl);
-        //  echo 'content type: ' . $info['content_type'] . '<br />';
-        // echo 'http code: ' . $info['http_code'] . '<br />';
+    //     // Get some cURL session information back
+    //     $info = curl_getinfo($curl);
+    //     //  echo 'content type: ' . $info['content_type'] . '<br />';
+    //     // echo 'http code: ' . $info['http_code'] . '<br />';
 
-        // Free up the resources $curl is using
-        curl_close($curl);
+    //     // Free up the resources $curl is using
+    //     curl_close($curl);
 
-        return json_decode($result);
-    }
+    //     return json_decode($result);
+    // }
 
-    public function checkMessageStatus($message_id, $token)
-    {
-        $check_message_status_endpoint = $this->send_sms_check_message_status_endpoint;
-        $curl = curl_init();
+    // public function checkMessageStatus($message_id, $token)
+    // {
+    //     $check_message_status_endpoint = $this->send_sms_check_message_status_endpoint;
+    //     $curl = curl_init();
 
-        $data = array(
-            'message_id' => (string)$message_id 
-        );
+    //     $data = array(
+    //         'message_id' => (string)$message_id 
+    //     );
 
-        // We POST the data
-        curl_setopt($curl, CURLOPT_POST, 1);
-        // Set the url path we want to call
-        curl_setopt($curl, CURLOPT_URL, $check_message_status_endpoint);
-        // Make it so the data coming back is put into a string
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // Insert the data
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+    //     // We POST the data
+    //     curl_setopt($curl, CURLOPT_POST, 1);
+    //     // Set the url path we want to call
+    //     curl_setopt($curl, CURLOPT_URL, $check_message_status_endpoint);
+    //     // Make it so the data coming back is put into a string
+    //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    //     // Insert the data
+    //     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
 
-        curl_setopt($curl, CURLOPT_HTTPHEADER,  array(
-            "Content-Type: application/json",
-            "Authorization: Bearer " . $token
-        ));
+    //     curl_setopt($curl, CURLOPT_HTTPHEADER,  array(
+    //         "Content-Type: application/json",
+    //         "Authorization: Bearer " . $token
+    //     ));
 
-        $result = curl_exec($curl);
-        $info = curl_getinfo($curl);
+    //     $result = curl_exec($curl);
+    //     $info = curl_getinfo($curl);
 
 
-        // Free up the resources $curl is using
-        curl_close($curl);
+    //     // Free up the resources $curl is using
+    //     curl_close($curl);
 
-        return $result;
-    }
+    //     return $result;
+    // }
 
-   public function phonize($phoneNumber, $country) 
-   {
+//    public function phonize($phoneNumber, $country) 
+//    {
 
-        $countryCodes = array(
-            'ug' => '+256',
-            'ke' => '+254',
+//         $countryCodes = array(
+//             'ug' => '+256',
+//             'ke' => '+254',
             
-        );
+//         );
     
-        return preg_replace('/[^0-9+]/', '',
-               preg_replace('/^0/', $countryCodes[$country], $phoneNumber));
-    }
+//         return preg_replace('/[^0-9+]/', '',
+//                preg_replace('/^0/', $countryCodes[$country], $phoneNumber));
+//     }
 
-    public function sendSMS(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string',
-            'message' => 'required|string',
-            'contact' => 'required|string'
-        ]);
+    // public function sendSMS(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required|string',
+    //         'message' => 'required|string',
+    //         'contact' => 'required|string'
+    //     ]);
 
-        $login_result = $this->loginToSMSPortal($this->send_sms_email_account, $this->send_sms_account_password, $this->send_sms_login_endpoint);
+    //     $login_result = $this->loginToSMSPortal($this->send_sms_email_account, $this->send_sms_account_password, $this->send_sms_login_endpoint);
 
-        $token = $login_result->token;
+    //     $token = $login_result->token;
 
-        $contact = $this->phonize($request->contact, "ug");
+    //     $contact = $this->phonize($request->contact, "ug");
         
       
-        $message =  '*******************' . PHP_EOL . '|    ' . $request->title . '    |' . PHP_EOL . '*******************' . PHP_EOL . $request->message;
+    //     $message =  '*******************' . PHP_EOL . '|    ' . $request->title . '    |' . PHP_EOL . '*******************' . PHP_EOL . $request->message;
 
-       // return $message;
-        // Here is the data we will be sending to the service
-        $some_data = array(
-            'message' => $message,
-            'title' => $request->title,
-            'contact' => $contact
-        );
+    //    // return $message;
+    //     // Here is the data we will be sending to the service
+    //     $some_data = array(
+    //         'message' => $message,
+    //         'title' => $request->title,
+    //         'contact' => $contact
+    //     );
 
-        $curl = curl_init();
+    //     $curl = curl_init();
        
-        // We POST the data
-        curl_setopt($curl, CURLOPT_POST, 1);
-        // Set the url path we want to call
-        curl_setopt($curl, CURLOPT_URL, $this->send_sms_endpoint);
-        // Make it so the data coming back is put into a string
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // Insert the data
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($some_data));
+    //     // We POST the data
+    //     curl_setopt($curl, CURLOPT_POST, 1);
+    //     // Set the url path we want to call
+    //     curl_setopt($curl, CURLOPT_URL, $this->send_sms_endpoint);
+    //     // Make it so the data coming back is put into a string
+    //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    //     // Insert the data
+    //     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($some_data));
 
-        curl_setopt($curl, CURLOPT_HTTPHEADER,  array(
-            "Content-Type: application/json",
-            "Authorization: Bearer " . $token
-        ));
-        // Send the request
-        $result = curl_exec($curl);
-        // Get some cURL session information back
-        $info = curl_getinfo($curl);
-        // Free up the resources $curl is using
-        curl_close($curl);
+    //     curl_setopt($curl, CURLOPT_HTTPHEADER,  array(
+    //         "Content-Type: application/json",
+    //         "Authorization: Bearer " . $token
+    //     ));
+    //     // Send the request
+    //     $result = curl_exec($curl);
+    //     // Get some cURL session information back
+    //     $info = curl_getinfo($curl);
+    //     // Free up the resources $curl is using
+    //     curl_close($curl);
 
-        $decoded_data = json_decode($result);
+    //     $decoded_data = json_decode($result);
 
-        $status = "None";
+    //     $status = "None";
 
-        if($info['http_code'] == 200)
-        {
-            $status = $this->checkMessageStatus($decoded_data->message_id, $token);
-        }  
+    //     if($info['http_code'] == 200)
+    //     {
+    //         $status = $this->checkMessageStatus($decoded_data->message_id, $token);
+    //     }  
 
-        return response()->json([
-            'sending_response' => $decoded_data,
-            'confirmation_response' => json_decode($status) 
-        ]);
-    }
+    //     return response()->json([
+    //         'sending_response' => $decoded_data,
+    //         'confirmation_response' => json_decode($status) 
+    //     ]);
+    // }
 
     public function showChats(Request $request)
     {

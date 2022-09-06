@@ -14,6 +14,7 @@ use App\Http\Controllers\ViolenceController;
 use App\Http\Controllers\SubCountiesController;
 use App\Http\Controllers\UserCaseController;
 use App\Http\Controllers\ReportedUsersController;
+use App\Http\Controllers\CaseFeedbackController;
 
 
 
@@ -49,6 +50,9 @@ Route::group(['middleware' => 'auth'], function($router){
     Route::get('/activists', [ActivistsController::class, 'showActivists'])->name('view.activists');
 
     Route::get('/activists-cases/{id}', [ActivistsController::class, 'showActivistCases'])->name('activists.cases');
+
+    Route::get('/activist-view-case_detail/{id}', [ActivistsController::class, 'activistViewCaseDetail']);
+
 
     Route::get('/activist-details/{id}', [ActivistsController::class, 'showActivistDetails'])->name('activist.details');
 
@@ -177,6 +181,8 @@ Route::group(['middleware' => 'auth'], function($router){
     Route::post('/report-an-activist', [ReportedUsersController::class, 'reportAUser'])->name('report.activist');
 
     Route::get('/dashboard-stats', [CustomAuthController::class, 'getDashboardStatistics'])->name('dashboard.stats');
+
+    Route::post('/save-feedback', [CaseFeedbackController::class, 'saveCaseFeedback']);
 
 });
 

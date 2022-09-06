@@ -20,9 +20,16 @@
 <!-- App CSS -->  
 <link id="theme-style" rel="stylesheet" href="{{ asset('dashboard_assets/css/portal.css') }}">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
 @if(Request::is('chat-detail'))
 
 <style>
+body {
+  font-family: 'Montserrat', sans-serif !important;
+}
 
 /* Chat containers */
 .container {
