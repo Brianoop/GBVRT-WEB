@@ -167,9 +167,6 @@ Route::group(['middleware' => 'auth'], function($router){
     Route::delete('/delete-sub-county', [SubCountiesController::class, 'deleteSubCounty'])->name('subcounty.delete');
 
 
-
-
-
     Route::get('/user-cases', [UserCaseController::class, 'showUserCasesPage'])->name('users.cases');
 
     Route::get('/user-case-detail/{id}', [UserCaseController::class, 'showUserCaseDetailPage']);

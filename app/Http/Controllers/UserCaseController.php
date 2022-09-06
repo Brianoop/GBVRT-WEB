@@ -53,7 +53,8 @@ class UserCaseController extends Controller
         ]);
     }
 
-    public function showUserCaseDetailPage($id){
+    public function showUserCaseDetailPage($id)
+    {
 
         $logged_in_users_case = $this->user_cases
         //->join('users', 'user_cases.users_id', '=', 'users.id')

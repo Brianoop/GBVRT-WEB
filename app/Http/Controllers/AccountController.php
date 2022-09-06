@@ -39,6 +39,22 @@ class AccountController extends Controller
         $new_user->email = $request->email;
         $new_user->contact = $request->contact;
         $new_user->type = $request->type;
+
+        if(!empty($request->organisation_name) )
+        {
+            $new_user->organisation_name = $request->organisation_name;
+        }
+
+        if(!empty($request->brief_description) )
+        {
+            $new_user->brief_description = $request->brief_description;
+        }
+
+        if(!empty($request->detailed_description) )
+        {
+            $new_user->detailed_description = $request->detailed_description;
+        }
+
         $new_user->password =  Hash::make($request->password);
 
         if($new_user->save())
@@ -68,17 +84,40 @@ class AccountController extends Controller
 
     public function updateUserAccount(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|integer',
-            'name' => 'required|string',
-            'email' => 'email',
-            'type' => 'required|integer',
-            'password' => 'confirmed'
-        ]);
+
+        //return $request;
+        
+
+        if(auth()->user()->type == 2)
+        {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required|integer',
+                'name' => 'required|string',
+                'email' => 'email',
+                'type' => 'required|integer',
+                'organisation_name' => 'required|string',
+                'brief_description' => 'required|string',
+                'detailed_description' => 'required|string',
+                'password' => 'confirmed'
+            ]);
+        }
+        else 
+        {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required|integer',
+                'name' => 'required|string',
+                'email' => 'email',
+                'type' => 'required|integer',
+                'password' => 'confirmed'
+            ]);
+        }
+
 
         if ($validator->fails()) {
             return back()->withErrors($validator);
         }
+
+       
 
         $user_account = User::find($request->id);
 
@@ -91,6 +130,23 @@ class AccountController extends Controller
         {
             $user_account->contact = $request->contact;
         }
+
+        if(!empty($request->organisation_name) )
+        {
+            $user_account->organisation_name = $request->organisation_name;
+        }
+
+        if(!empty($request->brief_description) )
+        {
+            $user_account->brief_description = $request->brief_description;
+        }
+
+        if(!empty($request->detailed_description) )
+        {
+            $user_account->detailed_description = $request->detailed_description;
+        }
+
+
 
         if(!empty($request->email) )
         {
@@ -113,9 +169,17 @@ class AccountController extends Controller
         }
 
 
-        if(!empty($request->password))
+        if(!empty($request->password) && !empty($request->password_confirmation))
         {
-            $user_account->password = Hash::make($request->password);
+            $validator = Validator::make($request->all(), [
+                'password' => 'confirmed'
+            ]);
+
+            if($request->password == $request->password_confirmation)
+            {
+                $user_account->password = Hash::make($request->password);
+            }
+           
         }
 
         if($user_account->save())
