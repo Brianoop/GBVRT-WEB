@@ -327,7 +327,7 @@
 
 
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span class="nav-icon">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-circle"
@@ -341,7 +341,7 @@
                     <span class="nav-link-text">Help</span>
                 </a>
 
-            </li>
+            </li> --}}
 
         </ul>
 

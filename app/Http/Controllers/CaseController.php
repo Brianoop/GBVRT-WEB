@@ -47,6 +47,7 @@ class CaseController extends Controller
 
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|integer',
+            'case_number' => 'required|string',
             'victim_name' => 'required|string',
             'victim_location' => 'required|string',
             'victim_contact' => 'required|string',
@@ -63,6 +64,8 @@ class CaseController extends Controller
         $user_case = new UserCase();
 
         $user_case->users_id = $request->user_id;
+
+        $user_case->case_number = $request->case_number;
 
         $user_case->victim_name = $request->victim_name;
 

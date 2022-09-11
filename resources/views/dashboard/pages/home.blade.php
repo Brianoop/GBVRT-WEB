@@ -23,7 +23,7 @@
                                 </div>
                             @elseif (Auth::user()->type == 1)
                                 <div>
-                                    Hello Admin, to manage GBVRT, use the feautures on the menu.
+                                    Hello Admin, to manage GBVRT, use the features on the menu.
                                 </div>
                             @endif
                         </div>
@@ -41,9 +41,10 @@
                                             d="M8 6a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 10.293V6.5A.5.5 0 0 1 8 6z" />
                                     </svg>Report Case</a>
                             @elseif (Auth::user()->type == 2)
-                                <a class="btn app-btn-primary" href="{{ url('/activists-cases' . '/' . auth()->user()->id) }}"><svg width="1em" height="1em"
-                                        viewBox="0 0 16 16" class="bi bi-file-earmark-arrow-down me-2" fill="currentColor"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                <a class="btn app-btn-primary"
+                                    href="{{ url('/activists-cases' . '/' . auth()->user()->id) }}"><svg width="1em"
+                                        height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-arrow-down me-2"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
                                         <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z" />
@@ -72,28 +73,28 @@
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Total Cases</h4>
                             <div class="stats-figure" id="my_total_cases">0</div>
-                          
+
                         </div>
-                       
+
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                  
+
                 </div>
-              
+
 
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Complaints</h4>
                             <div class="stats-figure" id="my_total_complaints">0</div>
-                            
+
                         </div>
-                     
+
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                  
+
                 </div>
-               
+
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
@@ -101,12 +102,12 @@
                             <div class="stats-figure" id="my_total_chats">0</div>
 
                         </div>
-                      
+
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                  
+
                 </div>
-               
+
             </div>
         @endif
 
@@ -116,29 +117,29 @@
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Total Cases</h4>
-                            <div class="stats-figure" id="my_total_cases">0</div>
-                          
+                            <div class="stats-figure" id="activists_cases">0</div>
+
                         </div>
-                       
+
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                  
+
                 </div>
-              
+
 
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Complaints</h4>
                             <div class="stats-figure" id="my_total_complaints">0</div>
-                            
+
                         </div>
-                     
+
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                  
+
                 </div>
-               
+
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
@@ -146,16 +147,73 @@
                             <div class="stats-figure" id="my_total_chats">0</div>
 
                         </div>
-                      
+
                         <a class="app-card-link-mask" href="#"></a>
                     </div>
-                  
+
                 </div>
-               
+
             </div>
         @endif
-       
+
         @if (Auth::user()->type == 1)
+            <div class="row g-4 mb-4" style="margin: auto !important;">
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Total Cases</h4>
+                            <div class="stats-figure" id="total_cases">0</div>
+
+                        </div>
+
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div>
+
+                </div>
+
+
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Complaints</h4>
+                            <div class="stats-figure" id="total_complaints">0</div>
+
+                        </div>
+
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div>
+
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">SMS Credit Balance</h4>
+                            <div class="stats-figure sms_balance"></div>
+
+                        </div>
+
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div>
+
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Total Users</h4>
+                            <div class="stats-figure" id="total_users">0</div>
+
+                        </div>
+
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <br>
             <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-6">
                     <div class="app-card app-card-chart h-100 shadow-sm">
@@ -233,7 +291,7 @@
                 <!--//col-->
 
             </div>
-           
+
             <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-6">
                     <div class="app-card app-card-progress-list h-100 shadow-sm">
@@ -242,14 +300,13 @@
                                 <div class="col-auto">
                                     <h4 class="app-card-title">Reported Cases by Category</h4>
                                 </div>
-                                <!--//col-->
-                                <div class="col-auto">
+                             
+                                {{-- <div class="col-auto">
                                     <div class="card-header-action">
                                         <a href="#">All Cases</a>
                                     </div>
-                                    <!--//card-header-actions-->
-                                </div>
-                                <!--//col-->
+                                </div> --}}
+                             
                             </div>
                             <!--//row-->
                         </div>
@@ -371,13 +428,13 @@
                                 <div class="col-auto">
                                     <h4 class="app-card-title">Stats List</h4>
                                 </div>
-                                <!--//col-->
-                                <div class="col-auto">
+
+                                {{-- <div class="col-auto">
                                     <div class="card-header-action">
                                         <a href="#">View report</a>
                                     </div>
-                                    <!--//card-header-actions-->
-                                </div>
+                                </div> --}}
+
                                 <!--//col-->
                             </div>
                             <!--//row-->
@@ -389,51 +446,45 @@
                                     <thead>
                                         <tr>
                                             <th class="meta">Source</th>
-                                            <th class="meta stat-cell">Views</th>
-                                            <th class="meta stat-cell">Today</th>
+                                            <th class="meta stat-cell">Number</th>
+                                            {{-- <th class="meta stat-cell">Today</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><a href="#">google.com</a></td>
-                                            <td class="stat-cell">110</td>
+                                            <td><a href="#">Total users</a></td>
                                             <td class="stat-cell">
-                                                <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                    class="bi bi-arrow-up text-success" fill="currentColor"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-                                                </svg>
-                                                30%
+                                                <span class="total_users">0</span>
                                             </td>
+                                            {{-- <td class="stat-cell">30%</td> --}}
                                         </tr>
                                         <tr>
-                                            <td><a href="#">getbootstrap.com</a></td>
-                                            <td class="stat-cell">67</td>
-                                            <td class="stat-cell">23%</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">w3schools.com</a></td>
-                                            <td class="stat-cell">56</td>
+                                            <td><a href="#">Total activists</a></td>
                                             <td class="stat-cell">
-                                                <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                    class="bi bi-arrow-down text-danger" fill="currentColor"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
-                                                </svg>
-                                                20%
+                                                <span class="total_activists">0</span>
                                             </td>
+                                            {{-- <td class="stat-cell">23%</td> --}}
                                         </tr>
                                         <tr>
-                                            <td><a href="#">javascript.com </a></td>
-                                            <td class="stat-cell">24</td>
-                                            <td class="stat-cell">-</td>
+                                            <td><a href="#">Total chats</a></td>
+                                            <td class="stat-cell">
+                                                <span class="total_chats">0</span>
+                                            </td>
+                                            {{-- <td class="stat-cell">20%</td> --}}
                                         </tr>
                                         <tr>
-                                            <td><a href="#">github.com </a></td>
-                                            <td class="stat-cell">17</td>
-                                            <td class="stat-cell">15%</td>
+                                            <td><a href="#">Total cases</a></td>
+                                            <td class="stat-cell">
+                                                <span class="total_cases">0</span>
+                                            </td>
+                                            {{-- <td class="stat-cell">-</td> --}}
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Total complaints </a></td>
+                                            <td class="stat-cell">
+                                                <span class="total_complaints">0</span>
+                                            </td>
+                                            {{-- <td class="stat-cell">15%</td> --}}
                                         </tr>
                                     </tbody>
                                 </table>
@@ -446,7 +497,7 @@
                 </div>
                 <!--//col-->
             </div>
-           
+
 
             {{-- <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-4">
@@ -571,23 +622,25 @@
             </div> --}}
         @endif
     </div>
- 
+
 
 
     @csrf
 
-    <script>
-        $(document).ready(function() {
 
-            var _token = $("input[name='_token']").val();
 
-            loadDashboardStatistics(_token);     
+    @if (auth()->user()->type == 1)
+        <script>
+            $(document).ready(function() {
 
-        });
+                var _token = $("input[name='_token']").val();
 
-        function loadDashboardStatistics(_token)
-        {
-            $.ajax({
+                loadDashboardStatistics(_token);
+
+            });
+
+            function loadDashboardStatistics(_token) {
+                $.ajax({
                     type: "GET",
                     url: "{{ URL::to('dashboard-stats') }}",
                     data: JSON.stringify({
@@ -597,7 +650,7 @@
                     processData: true,
                     success: function(response) {
                         console.log(response);
-                    
+
 
                         const total_chats = response.total_chats;
                         const total_complaints = response.total_complaints;
@@ -612,9 +665,25 @@
                         const my_total_complaints = response.my_total_complaints;
                         const my_total_chats = response.my_total_chats;
 
-                        document.getElementById('my_total_cases').innerHTML = my_total_cases;
-                        document.getElementById('my_total_complaints').innerHTML = my_total_complaints;
-                        document.getElementById('my_total_chats').innerHTML = my_total_chats;
+                        const activists_cases = response.activists_cases;
+
+
+
+                        document.getElementById('total_cases').innerHTML = total_cases;
+                        document.getElementById('total_complaints').innerHTML = total_complaints;
+                        // document.getElementById('total_chats').innerHTML = total_chats;
+                        document.getElementById('total_users').innerHTML = total_users;
+
+                        document.querySelector('.total_users').innerHTML = total_users;
+                        document.querySelector('.total_cases').innerHTML = total_cases;
+                        document.querySelector('.total_activists').innerHTML = total_activists;
+                        document.querySelector('.total_complaints').innerHTML = total_complaints;
+                        document.querySelector('.total_chats').innerHTML = total_chats;
+                        document.querySelector('.sms_balance').innerHTML = sms_balance;
+
+
+
+
 
 
                         // document.getElementById('total_chats').innerHTML = total_chats;
@@ -627,10 +696,10 @@
                         // document.getElementById('total_reported_users').innerHTML = total_reported_users;
 
 
-                        
+
 
                         // alert(response);
-                      //  window.location.reload();
+                        //  window.location.reload();
                     },
                     error: function(data, textStatus, errorThrown) {
                         console.log(data);
@@ -639,6 +708,117 @@
 
                     },
                 });
-        }
-    </script>
+            }
+        </script>
+    @elseif(auth()->user()->type == 2)
+        <script>
+            $(document).ready(function() {
+
+                var _token = $("input[name='_token']").val();
+
+                loadDashboardStatistics(_token);
+
+            });
+
+            function loadDashboardStatistics(_token) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ URL::to('dashboard-stats') }}",
+                    data: JSON.stringify({
+                        _token
+                    }),
+                    contentType: "application/json",
+                    processData: true,
+                    success: function(response) {
+                        console.log(response);
+
+
+                        const my_total_cases = response.my_total_cases;
+                        const my_total_complaints = response.my_total_complaints;
+                        const my_total_chats = response.my_total_chats;
+                        const activists_cases = response.activists_cases;
+
+
+
+                        document.getElementById('activists_cases').innerHTML = activists_cases;
+                        document.getElementById('my_total_complaints').innerHTML = my_total_complaints;
+                        document.getElementById('my_total_chats').innerHTML = my_total_chats;
+
+                    },
+                    error: function(data, textStatus, errorThrown) {
+                        console.log(data);
+                        // alert(data);
+
+
+                    },
+                });
+            }
+        </script>
+    @else
+        <script>
+            $(document).ready(function() {
+
+                var _token = $("input[name='_token']").val();
+
+                loadDashboardStatistics(_token);
+
+            });
+
+            function loadDashboardStatistics(_token) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ URL::to('dashboard-stats') }}",
+                    data: JSON.stringify({
+                        _token
+                    }),
+                    contentType: "application/json",
+                    processData: true,
+                    success: function(response) {
+                        console.log(response);
+
+
+                        const total_chats = response.total_chats;
+                        const total_complaints = response.total_complaints;
+                        const total_cases = response.total_cases;
+                        const total_users = response.total_users;
+                        const total_activists = response.total_activists;
+                        const total_victims = response.total_victims;
+                        const sms_balance = response.sms_balance;
+                        const total_reported_users = response.total_reported_users;
+
+                        const my_total_cases = response.my_total_cases;
+                        const my_total_complaints = response.my_total_complaints;
+                        const my_total_chats = response.my_total_chats;
+
+                        const activists_cases = response.activists_cases;
+
+                        document.getElementById('my_total_cases').innerHTML = my_total_cases;
+                        document.getElementById('my_total_complaints').innerHTML = my_total_complaints;
+                        document.getElementById('my_total_chats').innerHTML = my_total_chats;
+
+                        // document.getElementById('total_chats').innerHTML = total_chats;
+                        // document.getElementById('total_complaints').innerHTML = total_complaints;
+                        // document.getElementById('total_cases').innerHTML = total_cases;
+
+                        // document.getElementById('total_activists').innerHTML = total_activists;
+                        // document.getElementById('total_victims').innerHTML = total_victims;
+                        // document.getElementById('total_users').innerHTML = total_users;
+                        // document.getElementById('total_reported_users').innerHTML = total_reported_users;
+
+
+
+
+                        // alert(response);
+                        //  window.location.reload();
+                    },
+                    error: function(data, textStatus, errorThrown) {
+                        console.log(data);
+                        // alert(data);
+
+
+                    },
+                });
+            }
+        </script>
+    @endif
 @endsection

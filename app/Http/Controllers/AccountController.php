@@ -25,7 +25,7 @@ class AccountController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
-            'contact' => 'required|string|unique:users',
+            'contact' => 'required||min:10|numeric|unique:users',
             'type' => 'required|integer',
             'password' => 'required|confirmed|min:8'
         ]);
@@ -108,6 +108,7 @@ class AccountController extends Controller
                 'name' => 'required|string',
                 'email' => 'email',
                 'type' => 'required|integer',
+                'contact' => 'required||min:10|numeric',
                 'organisation_name' => 'required|string',
                 'brief_description' => 'required|string',
                 'detailed_description' => 'required|string',
@@ -120,6 +121,7 @@ class AccountController extends Controller
                 'id' => 'required|integer',
                 'name' => 'required|string',
                 'email' => 'email',
+                'contact' => 'required||min:10|numeric',
                 'type' => 'required|integer',
                 'password' => 'confirmed'
             ]);

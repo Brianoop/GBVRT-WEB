@@ -19,6 +19,7 @@ class CreateUserCasesTable extends Migration
           //  $table->foreignId('violences_id')->nullable()->constrained('violences')->onDelete('set null')->onUpdate('cascade');
           //  $table->foreignId('sub_counties_id')->nullable()->constrained('sub_counties')->onUpdate('cascade')->onDelete('set null');
             $table->enum('case_status', ['OPEN', 'CLOSED'])->default('CLOSED');
+            $table->string('case_number')->nullable();
             $table->string('victim_name')->nullable();
             $table->string('victim_location')->nullable();
             $table->string('victim_contact')->nullable();

@@ -15,7 +15,9 @@ class UsersController extends Controller
     public function showReportCasePage()
     {
         return view('dashboard.pages.report_case', 
-        ['activists' => User::where('type', 2)->get(),
+        [
+         'case_number' => 'GBV_ID_'. rand(0,100000),
+         'activists' => User::where('type', 2)->get(),
          'violence' => Violence::all(), 
          'sub_counties' => SubCounties::all()]);
     }

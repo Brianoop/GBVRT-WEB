@@ -17,6 +17,7 @@ use App\Models\ReportedUsers;
 use App\Models\ActivistData;
 use App\Models\ActivistServices;
 use App\Models\CaseReceiver;
+use App\Models\SmsCredit;
 
 class CustomAuthController extends Controller
 {
@@ -106,7 +107,7 @@ class CustomAuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
-            'contact' => 'required|numeric|unique:users',
+            'contact' => 'required|min:10|numeric|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
            
@@ -187,6 +188,16 @@ class CustomAuthController extends Controller
 
         $activists_cases = CaseReceiver::where('users_id', auth()->user()->id)->get()->count();
 
+        $sms_credit = SmsCredit::latest()
+        ->get()
+        ->first();
+
+        $sms_credit_balance = 0;
+
+        if($sms_credit !== null)
+        {
+            $sms_credit_balance = $sms_credit->sms_credit_balance;
+        }
         
 
         return response()->json([
@@ -196,12 +207,12 @@ class CustomAuthController extends Controller
             'total_activists' => $total_activists,
             'total_victims' => $total_victims,
             'total_reported_users' => $total_reported_users,
-            'sms_balance' => 578,
+            'sms_balance' => (int)$sms_credit_balance,
             'total_users' => $total_users,
             'total_cases' => $total_cases,
             'total_chats' => $total_chats,
             'total_complaints' => $total_complaints,
-            'activists'
+            'activists_cases' => $activists_cases
         ]);
     }
 }

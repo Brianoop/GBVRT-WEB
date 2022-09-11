@@ -29,6 +29,22 @@
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
                         <div class="mb-3">
+                            <label for="setting-input-2" class="form-label">Case Number</label>
+                            @error('case_number')
+                                <span class="text text-danger">{{ $message }}</span>
+                            @enderror
+                            <input type="text" class="form-control" placeholder="{{ $case_number }}" name="case_number" value="{{ $case_number }}" readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="setting-input-2" class="form-label">Location of incident</label>
+                            @error('victim_location')
+                                <span class="text text-danger">{{ $message }}</span>
+                            @enderror
+                            <input type="text" class="form-control" placeholder="District, Village" name="victim_location">
+                        </div>
+
+                        <div class="mb-3">
                             <label for="setting-input-2" class="form-label">Location of incident</label>
                             @error('victim_location')
                                 <span class="text text-danger">{{ $message }}</span>
