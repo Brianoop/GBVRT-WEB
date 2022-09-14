@@ -10,7 +10,7 @@ window.chartColors = {
 };
 
 /* Random number generator for demo purpose */
-var randomDataPoint = function(){ return Math.round(Math.random()*10000)};
+var randomDataPoint = function(){ return Math.round(Math.random()*20)};
 
 
 //Chart.js Line Chart Example 
@@ -65,7 +65,7 @@ var lineChartConfig = {
 		
 		title: {
 			display: true,
-			text: 'Chart.js Line Chart Example',
+			text: 'Chart showing reported cases.',
 			
 		}, 
 		tooltips: {
@@ -84,10 +84,10 @@ var lineChartConfig = {
             callbacks: {
 	            //Ref: https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
                 label: function(tooltipItem, data) {
-	                if (parseInt(tooltipItem.value) >= 1000) {
-                        return "$" + tooltipItem.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	                if (parseInt(tooltipItem.value) >= 2) {
+                        return   tooltipItem.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     } else {
-	                    return '$' + tooltipItem.value;
+	                    return  tooltipItem.value;
                     }
                 }
             },
@@ -121,7 +121,7 @@ var lineChartConfig = {
 				ticks: {
 		            beginAtZero: true,
 		            userCallback: function(value, index, values) {
-		                return '$' + value.toLocaleString();   //Ref: https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
+		                return value.toLocaleString();   //Ref: https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
 		            }
 		        },
 			}]
@@ -139,20 +139,20 @@ var barChartConfig = {
 	data: {
 		labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 		datasets: [{
-			label: 'Orders',
+			label: 'Users',
 			backgroundColor: window.chartColors.green,
 			borderColor: window.chartColors.green,
 			borderWidth: 1,
 			maxBarThickness: 16,
 			
 			data: [
-				23,
-				45,
-				76,
-				75,
-				62,
-				37,
-				83
+				3,
+				14,
+				21,
+				10,
+				1,
+				25,
+				3
 			]
 		}]
 	},
@@ -165,7 +165,7 @@ var barChartConfig = {
 		},
 		title: {
 			display: true,
-			text: 'Chart.js Bar Chart Example'
+			text: 'Chart showing active users'
 		},
 		tooltips: {
 			mode: 'index',
