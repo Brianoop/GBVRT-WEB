@@ -154,6 +154,7 @@
                 </div>
 
             </div>
+            <br> <br>
             <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-6">
                     <div class="app-card app-card-chart h-100 shadow-sm">
