@@ -104,7 +104,7 @@
                             <label for="setting-input-3" class="form-label">Upload photos or videos for proof if any</label> <br>
                             <input type="file" name="files[]" class="form-control-file" multiple=''>
                         </div>
-                        <button type="submit" class="btn app-btn-primary">Save Case</button>
+                        <button type="submit" class="btn app-btn-primary">Report Case</button>
                     </form>
                 </div>
                
